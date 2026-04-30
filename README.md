@@ -1,127 +1,60 @@
-# DropInUISDK Usage Guide
+# UISDKKmpSample
 
 ## Overview
 
-This document focuses on the current integration pattern for `DropInUISDK` in an iOS project, along with the runnable example provided in this repository.
+`UISDKKmpSample` is a configuration-driven sample app for exploring and validating `DropInUISDK` features. It lets you pick a route, tweak config options, and attach a listener — then launch the SDK view to observe the result.
 
-`UISDKKmpSample` is used to demonstrate and validate the following capabilities:
-
-1. SDK initialization and authentication
-2. `DISdk` creation, presentation, and cleanup
-3. `DIConfigBuilder` configuration injection
-4. `AppRoute`-based page launching
-5. Listener registration patterns
+For `DropInUISDK` integration documentation, refer to [https://doc-beta.mapxus.com/](https://doc-beta.mapxus.com/).
 
 ## Requirements
 
 - iOS 15.6 or later
 - Xcode 26+
 - CocoaPods
-- Ruby / Bundler
 
-## Installation
+## Setup
 
-### Install via CocoaPods
-
-Add the dependency to your `Podfile`:
-
-```ruby
-source 'https://github.com/Mapxus/mapxusSpecs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-
-target 'YourAppName' do
-	use_frameworks!
-
-	pod 'DropInUISDK'
-end
-```
-
-After cloning this repository, run the following command before opening the workspace:
+### 1. Install dependencies
 
 ```bash
-bundle exec pod install
+pod install
 ```
 
-## Credentials Setup
+### 2. Configure credentials
 
-This project does not commit the API key or secret to Git. Instead, they are injected through `xcconfig`.
+This project does not commit the API key or secret to Git. They are injected via `xcconfig`.
 
 1. Copy `BuildConfig/Secrets.example.xcconfig` to `BuildConfig/Secrets.local.xcconfig`
 2. Fill in your own `MAPXUS_API_KEY` and `MAPXUS_SECRET`
-3. Open the project with `UISDKKmpSample.xcworkspace`
 
-`BuildConfig/Secrets.local.xcconfig` is already listed in `.gitignore` and should remain local only.
+`BuildConfig/Secrets.local.xcconfig` is listed in `.gitignore` and should remain local only.
 
-## Initialization
+### 3. Open the workspace
 
-Before using `DropInUISDK`, you must register the Mapxus service. In this project, initialization is done in `SceneDelegate`, and the credentials are read from `Info.plist` values injected by the build configuration.
+Always open `UISDKKmpSample.xcworkspace`, not the `.xcodeproj`.
 
-```swift
-import MapxusBaseSDK
+## Run
 
-let services = MXMMapServices.shared()
-services.delegate = self
+1. Select the `UISDKKmpSample` scheme
+2. Build and run
 
-let credentials = mapxusCredentials()
-services.register(withApiKey: credentials.apiKey, secret: credentials.secret)
-```
+## How the Sample App Works
 
-See [UISDKKmpSample/SceneDelegate.swift](UISDKKmpSample/SceneDelegate.swift) for the reference implementation.
+The app is organized around three pieces of shared state managed by `Config.shared`:
 
-## Create and Display the SDK View
+- **`diConfig`** — a `DIConfigBuilder` you edit through the feature screens
+- **`appRoute`** — the `AppRoute` to launch (e.g. landing page, venue detail, navigation)
+- **`listener`** — the single event listener registered for the current run
 
-This project uses the current API pattern: build a `DIConfig` first, then initialize `DISdk` with `DISdk(diConfig:)`.
+### Navigation flow
 
-```swift
-private let sdk: DISdk
+1. **`MainViewController`** — shows the current config, route, and listener; tap "Start" to launch the map
+2. **`CategoryListViewController`** — browse features organized by category
+3. **`FeatureListViewController`** — pick a specific feature to configure
+4. **Feature screens** (`BaseFeatureViewController` subclasses) — edit a config value or select a route/listener and save it back to `Config.shared`
+5. **`MapViewController`** — creates `DISdk` with the current config, attaches the selected listener, and starts the chosen route
 
-init() {
-	self.sdk = DISdk(diConfig: Config.shared.diConfig.build())
-	super.init(nibName: nil, bundle: nil)
-}
-```
-
-Use `getView()` to obtain the SDK view and attach it to your page.
-
-```swift
-dropInView = sdk.getView()
-guard let dropInView = dropInView else { return }
-
-view.addSubview(dropInView)
-dropInView.snp.makeConstraints { make in
-	make.edges.equalToSuperview()
-}
-```
-
-See [UISDKKmpSample/MapViewController.swift](UISDKKmpSample/MapViewController.swift) for the reference implementation.
-
-## Start a Page
-
-This project launches SDK pages with `start(route:)`.
-
-```swift
-sdk.start(route: Config.shared.appRoute)
-```
-
-This allows you to explicitly choose which business page to enter before launch, such as the landing page, venue detail page, POI detail page, or navigation page.
-
-## DIConfig Setup
-
-This project does not create `DIConfig` ad hoc in each page. Instead, it manages a shared `DIConfigBuilder` through `Config.shared.diConfig`, and calls `build()` only when entering the map page.
-
-This pattern works well for dynamic configuration editing and is closer to a real-world flow where configuration is collected first and the SDK is launched afterward.
-
-`Config.shared` mainly maintains three kinds of state:
-
-- `diConfig`: the active `DIConfigBuilder`
-- `appRoute`: the `AppRoute` to launch
-- `listener`: the single listener currently selected for registration
-
-See [UISDKKmpSample/Config.swift](UISDKKmpSample/Config.swift) for the implementation.
-
-## AppRoute Usage
-
-When the map page starts, it reads `Config.shared.appRoute` and passes it to `sdk.start(route:)`. The sample currently covers several common route types, including:
+### Supported routes
 
 - `LandingPageRoute`
 - `VenueDetailRoute`
@@ -130,31 +63,9 @@ When the map page starts, it reads `Config.shared.appRoute` and passes it to `sd
 - `EventDetailRoute`
 - `NavigationRoute`
 
-Route-related definitions can be found in [UISDKKmpSample/FeatureConstants.swift](UISDKKmpSample/FeatureConstants.swift).
+### Supported listeners
 
-## Listener Usage
-
-This project performs listener registration in `MapViewController`, selecting the registration method based on the current configuration before the page is displayed.
-
-`DISdk` itself supports multiple listeners, but this sample app configures only one listener at a time so each listener behavior can be tested independently.
-
-```swift
-private func setupListener() {
-		guard let listener = Config.shared.listener else { return }
-		switch listener {
-		case "setMapEventListener":
-				sdk.setMapEventListener(listener: MapEventHandler())
-		case "setNavigationEventListener":
-				sdk.setNavigationEventListener(listener: NavigationEventHandler())
-		case "setPoiEventListener":
-				sdk.setPoiEventListener(listener: PoiEventHandler())
-		default:
-				break
-		}
-}
-```
-
-The sample currently covers these registration entry points:
+> **Note:** `DISdk` supports setting multiple listeners simultaneously, but this sample registers only one at a time so each listener's behavior can be tested in isolation.
 
 - `setToolTipsListener`
 - `setLandingPageEventListener`
@@ -171,54 +82,10 @@ The sample currently covers these registration entry points:
 - `setMenuEventListener`
 - `setDataTrackingListener`
 
-See [UISDKKmpSample/MapViewController.swift](UISDKKmpSample/MapViewController.swift) for the full implementation.
-
-## Resource Cleanup
-
-This project calls `cleanup()` when the page is being popped to release SDK resources.
-
-```swift
-override func viewWillDisappear(_ animated: Bool) {
-	super.viewWillDisappear(animated)
-	if isMovingFromParent {
-		sdk.cleanup()
-	}
-}
-```
-
-If your page lifecycle matches this sample, this cleanup pattern is recommended.
-
-## Sample App Structure
-
-In addition to demonstrating SDK integration, this repository also provides a configuration-driven sample entry for quickly switching parameters and verifying behavior.
-
-- `MainViewController`: displays the current configuration, route, and listener
-- `CategoryListViewController`: organizes capability entries by category
-- `FeatureListViewController`: shows the feature items under a category
-- `BaseFeatureViewController` and subclasses: edit configuration and save changes
-- `MapViewController`: creates and starts `DISdk`
-
-If you only care about SDK integration, start with `SceneDelegate.swift`, `Config.swift`, and `MapViewController.swift`.
-
-## Run the Sample
-
-1. Set up the local credentials file
-2. Open `UISDKKmpSample.xcworkspace`
-3. Select the `UISDKKmpSample` scheme
-4. Run the app
-
-## Notes
-
-1. You must configure `BuildConfig/Secrets.local.xcconfig` before launch, otherwise the app will stop immediately due to missing credentials.
-2. `MapxusApiKey` and `MapxusSecret` in `Info.plist` are used to receive injected build configuration values and should not be removed.
-3. This project uses `Config.shared` to manage runtime configuration state. Do not introduce another configuration singleton.
-4. The sample currently registers only one listener at a time, and `MapViewController` is implemented around that assumption.
-5. If you change Pods or build configuration files, always open the project through `UISDKKmpSample.xcworkspace`.
-
 ## Key Files
 
 - [UISDKKmpSample/SceneDelegate.swift](UISDKKmpSample/SceneDelegate.swift)
-- [UISDKKmpSample/MapViewController.swift](UISDKKmpSample/MapViewController.swift)
 - [UISDKKmpSample/Config.swift](UISDKKmpSample/Config.swift)
+- [UISDKKmpSample/MapViewController.swift](UISDKKmpSample/MapViewController.swift)
 - [UISDKKmpSample/FeatureConstants.swift](UISDKKmpSample/FeatureConstants.swift)
 - [BuildConfig/Secrets.example.xcconfig](BuildConfig/Secrets.example.xcconfig)
