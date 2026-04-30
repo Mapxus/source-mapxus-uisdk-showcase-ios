@@ -1,0 +1,3 @@
+#include "../Pods/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.release.xcconfig"
+#include "Secrets.example.xcconfig"
+#include? "Secrets.local.xcconfig"

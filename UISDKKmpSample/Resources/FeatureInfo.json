@@ -1,0 +1,596 @@
+{
+  "searchPoiByBounds": {
+    "name": "searchPoiByBounds",
+    "dataType": "Function",
+    "defaultValue": "",
+    "description": "Searches for a Point of Interest (POI) within a specified geographical bounding box based on a query name. The maximum rectangular search area cannot exceed 400 km².",
+    "parameters": "bounds: Bounds\nqueryName: String",
+    "returnType": "PoiInfo?"
+  },
+  "searchPoiById": {
+    "name": "searchPoiById",
+    "dataType": "Function",
+    "defaultValue": "",
+    "description": "Retrieves Point of Interest (POI) information by a specific POI ID.",
+    "parameters": "poiId: String",
+    "returnType": "PoiInfo?"
+  },
+  "searchVenuesByName": {
+    "name": "searchVenuesByName",
+    "dataType": "Function",
+    "defaultValue": "",
+    "description": "Searches for venues by name.",
+    "parameters": "queryName: String",
+    "returnType": "[VenueInfo]"
+  },
+  "searchVenuesNearby": {
+    "name": "searchVenuesNearby",
+    "dataType": "Function",
+    "defaultValue": "",
+    "description": "Searches for venues nearby a geographic coordinate.",
+    "parameters": "latitude: Double\nlongitude: Double\nradius: Double",
+    "returnType": "[VenueInfo]"
+  },
+  "searchVenuesByIds": {
+    "name": "searchVenuesByIds",
+    "dataType": "Function",
+    "defaultValue": "",
+    "description": "Searches for venues by a list of venue IDs. The maximum limit is 10 IDs; if over 10, only the top 10 are used.",
+    "parameters": "venueIds: [String]",
+    "returnType": "[VenueInfo]"
+  },
+  "initialMapBearing": {
+    "name": "initialMapBearing",
+    "dataType": "Double",
+    "defaultValue": "0.0",
+    "description": "Initial map bearing (orientation) in degrees. Defines the direction the map faces when first loaded. Default is 0.0 (north-up)."
+  },
+  "initialMapPitch": {
+    "name": "initialMapPitch",
+    "dataType": "Double",
+    "defaultValue": "0.0",
+    "description": "Initial map pitch (tilt angle) in degrees. Defines the vertical tilt angle of the map when first loaded. A value of 0.0 represents a top-down view (2D), while higher values create a 3D perspective. Valid range is 0.0 to 60.0 degrees. Default is 0.0 (vertical top-down view)."
+  },
+  "initialBounds": {
+    "name": "initialBounds",
+    "dataType": "Bounds?",
+    "defaultValue": "nil",
+    "description": "Defines the initial geographic area (bounding box) to be displayed when the map loads. This region is typically used as the default viewport on the landing page or venue page. If null, the map will determine the initial view automatically."
+  },
+  "mapBoundsRestriction": {
+    "name": "mapBoundsRestriction",
+    "dataType": "Bounds?",
+    "defaultValue": "nil",
+    "description": "Restricts the visible map area to the specified geographic bounds. When set, the user will only be able to pan and zoom within the defined region. Default is null, meaning no restriction is applied."
+  },
+  "mapStyle": {
+    "name": "mapStyle",
+    "dataType": "String",
+    "defaultValue": "\"drop_in_ui_v2_25d\"",
+    "description": "Specifies the map rendering style, such as 2D or 2.5D skin. This property is directly controlled by the user without any linked behavior to other properties. Users must provide the exact style name. Different styles control the map's visual appearance and interaction behavior. Default is \"drop_in_ui_v2_25d\"."
+  },
+  "mapStyleDark": {
+    "name": "mapStyleDark",
+    "dataType": "String",
+    "defaultValue": "\"mapxus_v8_dark\"",
+    "description": "Map style used when [appearanceMode] is set to [AppearanceMode.DARK]. This value controls the visual style specifically for dark mode. Default is \"mapxus_v8_dark\"."
+  },
+  "materialResourcePath": {
+    "name": "materialResourcePath",
+    "dataType": "String",
+    "defaultValue": "\"default\"",
+    "description": "Base directory path for material resources, including POI icons, category icons, and marker assets. This path is used to load related graphical assets for the map UI. Defaults to \"default\"."
+  },
+  "appearanceMode": {
+    "name": "appearanceMode",
+    "dataType": "AppearanceMode",
+    "defaultValue": "AppearanceMode.light",
+    "description": "Controls the appearance mode and the formula method used for UI color scheme calculation. This setting determines how the colors are computed based on the baseline values specified in [colors]. Supports both light and dark theme calculations. Default is AppearanceMode.light."
+  },
+  "colors": {
+    "name": "colors",
+    "dataType": "DIColors?",
+    "defaultValue": "nil",
+    "description": "UI color configuration for map components. Defines the baseline values used for calculating the UI color scheme. Works in conjunction with [appearanceMode] to compute the final colors applied to the map interface. When null, uses the default UI color configuration."
+  },
+  "shapes": {
+    "name": "shapes",
+    "dataType": "DIShapes",
+    "defaultValue": "DIShapes(\n  buttonShapeCornerSize: 8.0, \n  imageShapeCornerSize: 4.0, \n  searchBarShapeCornerSize: 10.0, \n  bottomSheetShapeCornerSize: 16.0, \n  popupCardShapeCornerSize: 16.0\n)",
+    "description": "UI shape configuration for elements within the map. Defines the corner radius settings for various map-related components. Default is an instance of DIShapes with predefined values."
+  },
+  "fixedDisplayCategories": {
+    "name": "fixedDisplayCategories",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "Categories of POIs permanently displayed on the map. Used to highlight key categories such as restaurants, restrooms, etc. Default is null, meaning no categories are fixed for display."
+  },
+  "recommendedCategories": {
+    "name": "recommendedCategories",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "List of recommended POI categories to highlight or prioritize in the UI. Can be used to guide users toward commonly used or featured categories. Displayed in the categories section. When null, the default category list is displayed."
+  },
+  "recommendedPoiIds": {
+    "name": "recommendedPoiIds",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "List of recommended POI (Point of Interest) IDs to highlight or prioritize in the UI. Can be used to guide users toward specific featured POIs. When null, the default POI recommendation list is used."
+  },
+  "poiSorting": {
+    "name": "poiSorting",
+    "dataType": "PoiSortingStrategy",
+    "defaultValue": "PoiSortingStrategy.byNameAlphabetically",
+    "description": "Sorting strategy for POIs displayed on category pages. Determines the order in which users browse and find relevant points. Default is PoiSortingStrategy.ByNameAlphabetically."
+  },
+  "categoryListConfig": {
+    "name": "categoryListConfig",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "List of categories displayed on the venue page. Defines which categories are shown by default to the user. When null, no categories will be displayed."
+  },
+  "poiDetailSections": {
+    "name": "poiDetailSections",
+    "dataType": "[PoiDetailSection]",
+    "defaultValue": "defaultPoiDetailInfos",
+    "description": "Configuration for the display of POI detail information. Defines the sections and content to be shown when a POI is selected. Default is [defaultPoiDetailInfos]."
+  },
+  "isBuildingListVisible": {
+    "name": "isBuildingListVisible",
+    "dataType": "Boolean",
+    "defaultValue": "true",
+    "description": "Indicates whether the building list is displayed on the venue page. The building list is shown only when the current venue contains multiple buildings. Default is true."
+  },
+  "buildingSectionTitle": {
+    "name": "buildingSectionTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Section title for the building list displayed on the venue page. Supports multiple languages via StringsWithLanguage. Only shown when isBuildingListVisible is true. When null, a default localized title will be used."
+  },
+  "venueHighlightedShopTitle": {
+    "name": "venueHighlightedShopTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Title text for highlighted shops within the venue. Supports multiple languages via StringsWithLanguage. Used to emphasize featured or promoted shops in the venue map UI."
+  },
+  "floorSelectorCategories": {
+    "name": "floorSelectorCategories",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "List of recommended POI categories for each floor on the floor selector page. When null, the default category list (e.g., restroom, mothers room, wheelchair_assist, parking) is displayed."
+  },
+  "venueDefaultSharedFloorIds": {
+    "name": "venueDefaultSharedFloorIds",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "List of shared floor IDs for venues. Replaces the default shared floor IDs of a venue with custom ones. This list supports up to 10 venues; if more than 10 shared floor IDs are provided, only the first 10 will be applied. When null, the system defaults are used for all venues."
+  },
+  "sharedFloorsUnifiedNames": {
+    "name": "sharedFloorsUnifiedNames",
+    "dataType": "[SharedFloorsUnifiedName]?",
+    "defaultValue": "nil",
+    "description": "List of renamed shared floors unified names in a venue. The new names are displayed in the floor selector instead of default names. This list supports up to 10 venues; if more than 10 entries are provided, only the first 10 will be applied. When null, the default shared floor names are used. Each item has venueId (String) and unifiedName (StringsWithLanguage)."
+  },
+  "venueAnchorPoiConfigs": {
+    "name": "venueAnchorPoiConfigs",
+    "dataType": "[VenueAnchorPoiConfig]?",
+    "defaultValue": "nil",
+    "description": "Configuration for anchor POIs across multiple venues. Each entry specifies a list of POI IDs to be treated as anchor POIs for a given venue. This list supports up to 10 venues; if more than 10 entries are provided, only the first 10 will be applied. For each venue, up to 20 POI IDs are supported; any additional POI IDs beyond the first 20 in a single entry will be ignored. When null, no custom anchor POIs are configured. Each item has venueId (String) and poiIds ([String])."
+  },
+  "venueLevelFacilityInfoConfig": {
+    "name": "venueLevelFacilityInfoConfig",
+    "dataType": "[VenueLevelFacilityInfoConfig]?",
+    "defaultValue": "nil",
+    "description": "Custom facility information configuration for venues. Each entry specifies facility groups (buildings, floors, and shared floors) for a given venue. When null, no custom facility info configuration is applied."
+  },
+  "navigationModes": {
+    "name": "navigationModes",
+    "dataType": "[NavigationMode]",
+    "defaultValue": "defaultNavigationModes",
+    "description": "Available navigation mode options, such as walking or wheelchair accessible routes. Defines which navigation modes are supported or suggested. Defaults to [NavigationMode.FOOT, NavigationMode.ACCESSIBILITY, NavigationMode.ELEVATOR, NavigationMode.ESCALATOR, NavigationMode.PUBLIC_TRANSPORT]."
+  },
+  "publicTransportModes": {
+    "name": "publicTransportModes",
+    "dataType": "[PublicTransportMode]",
+    "defaultValue": "[PublicTransportMode.GOOGLE_MAP]",
+    "description": "List of supported public transport modes. Defaults to [PublicTransportMode.GOOGLE_MAP]. When empty, no public transport mode will be showed."
+  },
+  "maximumRoutePlanningDistance": {
+    "name": "maximumRoutePlanningDistance",
+    "dataType": "Double?",
+    "defaultValue": "nil",
+    "description": "Maximum allowed distance for route planning, in meters. Used to limit the range of navigation routes."
+  },
+  "navigationRoadSnapStrength": {
+    "name": "navigationRoadSnapStrength",
+    "dataType": "Double?",
+    "defaultValue": "nil",
+    "description": "Controls how strongly the navigation blue dot snaps to the calculated route during navigation. A higher value increases the snapping strength, making the blue dot stay closer to the route line. When null, the snapping behavior is not used."
+  },
+  "noRouteAvailableTitle": {
+    "name": "noRouteAvailableTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Title displayed when no navigation route is available. Shown on the navigation preview page if no route can be found. Supports multiple languages via [StringsWithLanguage]. When null, a default no-route available message is displayed."
+  },
+  "noRouteAvailableMessage": {
+    "name": "noRouteAvailableMessage",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Detailed message displayed when no navigation route is available. Shown on the navigation preview page if no route can be found. Supports multiple languages via [StringsWithLanguage]. When null, a default no-route message content is used."
+  },
+  "language": {
+    "name": "language",
+    "dataType": "Language",
+    "defaultValue": "SystemLanguage",
+    "description": "Specifies the language used for the user interface. Defaults to the system language."
+  },
+  "settingsLanguageOptions": {
+    "name": "settingsLanguageOptions",
+    "dataType": "[Language]?",
+    "defaultValue": "nil",
+    "description": "List of supported UI languages for the Settings page. This defines which language options are available for the user to choose from. Can be null if no custom language options are specified."
+  },
+  "publicHolidayDisplayName": {
+    "name": "publicHolidayDisplayName",
+    "dataType": "StringsWithLanguage",
+    "defaultValue": "English: \"Public Holiday\"; \nSimplified Chinese: \"公众假期\"; \nTraditional Chinese: \"公眾假期\"; \nJapanese: \"祝日\"; \nKorean: \"Public Holiday\"",
+    "description": "Display name for public holidays in the UI. Supports multiple languages via StringsWithLanguage. "
+  },
+  "gpsModeDisplayName": {
+    "name": "gpsModeDisplayName",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Custom display name for the GPS mode label shown alongside the GPS icon. Replaces the default \"GPS\" text on all pages displaying the GPS icon. If the text exceeds available space, it will be truncated with an ellipsis (…). Supports multiple languages via [StringsWithLanguage]. When null, uses the default localized \"GPS\" label. When set to an empty string (\"\"), the GPS mode label will not be displayed."
+  },
+  "closeButtonTitle": {
+    "name": "closeButtonTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Custom display name for the close button in the Settings page."
+  },
+  "sendLogButtonTitle": {
+    "name": "sendLogButtonTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Log title displayed on the menu page. Supports multiple languages via [StringsWithLanguage]. If null, the log title will not be displayed."
+  },
+  "eventModuleTitle": {
+    "name": "eventModuleTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Title displayed at the top of the event list on the event page. Supports multiple languages via [StringsWithLanguage]. When null, a default localized title will be shown."
+  },
+  "eventOverviewTitle": {
+    "name": "eventOverviewTitle",
+    "dataType": "StringsWithLanguage?",
+    "defaultValue": "nil",
+    "description": "Title shown above the event overview section on the event detail page. Supports multiple languages via [StringsWithLanguage]. When null, a default localized title will be shown."
+  },
+  "toolTipsConfig": {
+    "name": "toolTipsConfig",
+    "dataType": "ToolTipsConfig?",
+    "defaultValue": "nil",
+    "description": "Configuration for in-app guidance prompts related to enabling and using indoor navigation features. Provides localized titles and detailed instructions to assist users with required setup steps. If null, will display built-in default guidance messages."
+  },
+  "globalFilterModes": {
+    "name": "globalFilterModes",
+    "dataType": "[GlobalFilterMode]?",
+    "defaultValue": "nil",
+    "description": "The list of enabled global filter modes available in the map UI. This determines which GlobalFilterMode options are shown to the user in the UI. By default, it is null. You can set it to include any combination of modes, for example: SEARCH, EVENTS, and SETTINGS. The list can be reassigned to customize which modes are available or to change their order."
+  },
+  "globalFilterTagIds": {
+    "name": "globalFilterTagIds",
+    "dataType": "[String]?",
+    "defaultValue": "nil",
+    "description": "Specifies the list of tagIds to be displayed in the global filter. Controls which tags are visible to users when interacting with the global filter module. If null, the global filter will use the default set of tags. If an empty list is set, no tags will be displayed in the global filter."
+  },
+  "filterChipsConfig": {
+    "name": "filterChipsConfig",
+    "dataType": "FilterChipsConfig?",
+    "defaultValue": "nil",
+    "description": "Configuration for the filter chips component. Customizes the behavior and appearance of filter chips, including enable/disable state, default filter keys and regions, and menu layout configuration. When null, uses the default filter chips configuration."
+  },
+  "copyrightConfig": {
+    "name": "copyrightConfig",
+    "dataType": "CopyrightConfig?",
+    "defaultValue": "nil",
+    "description": "Copyright display configuration. If not set, will use the default copyright information."
+  },
+  "attributionConfig": {
+    "name": "attributionConfig",
+    "dataType": "AttributionConfig?",
+    "defaultValue": "nil",
+    "description": "Attribution display configuration. If not set, will use the default attribution information."
+  },
+  "isLegalLinksVisible": {
+    "name": "isLegalLinksVisible",
+    "dataType": "Boolean",
+    "defaultValue": "true",
+    "description": "Determines whether the legal links section is visible in the UI."
+  },
+  "isShoplusButtonVisible": {
+    "name": "isShoplusButtonVisible",
+    "dataType": "Boolean",
+    "defaultValue": "true",
+    "description": "Determines whether the Shoplus button is visible in the UI. When true, the Shoplus button will be displayed; when false, it will be hidden. Default is true."
+  },
+  "isVenueBackButtonVisible": {
+    "name": "isVenueBackButtonVisible",
+    "dataType": "Boolean",
+    "defaultValue": "false",
+    "description": "Whether to display the venue back button on the venue page. This button allows users to navigate back from the venue context. Default is false."
+  },
+  "shareDisplayMode": {
+    "name": "shareDisplayMode",
+    "dataType": "ShareDisplayMode",
+    "defaultValue": "ShareDisplayMode.BOTH",
+    "description": "Share button display mode. Determines how the share button behaves and what options are available when tapped. Defaults to ShareDisplayMode.BOTH."
+  },
+  "selectedBuildingBorderStyle": {
+    "name": "selectedBuildingBorderStyle",
+    "dataType": "BorderStyle?",
+    "defaultValue": "nil",
+    "description": "Style configuration for rendering selected building or shared floor borders on the map. When null, the default border style is used."
+  },
+  "mapLabelsConfig": {
+    "name": "mapLabelsConfig",
+    "dataType": "MapLabelsConfig?",
+    "defaultValue": "nil",
+    "description": "Configuration for controlling map labels visibility behavior. When null, map labels follow default visibility settings."
+  },
+  "LandingPageRoute": {
+    "name": "LandingPageRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Navigate to the landing page for a given list of venue identifiers. The SDK will navigate to a pre-defined entry point or process associated with the specified venues.",
+    "parameters": "venueIds: [String] = []",
+    "returnType": "AppRoute (LandingPageRoute)"
+  },
+  "VenueDetailRoute": {
+    "name": "VenueDetailRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Navigate to the detail page of a specific venue.",
+    "parameters": "venueId: String",
+    "returnType": "AppRoute (VenueDetailRoute)"
+  },
+  "BuildingDetailRoute": {
+    "name": "BuildingDetailRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Navigate to the detail page of a specific building.",
+    "parameters": "buildingId: String",
+    "returnType": "AppRoute (BuildingDetailRoute)"
+  },
+  "PoiDetailRoute": {
+    "name": "PoiDetailRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Navigate to the detail page of a specific Point of Interest (POI).",
+    "parameters": "poiId: String",
+    "returnType": "AppRoute (PoiDetailRoute)"
+  },
+  "EventDetailRoute": {
+    "name": "EventDetailRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Navigate to the detail page of a specific event.",
+    "parameters": "eventId: String",
+    "returnType": "AppRoute (EventDetailRoute)"
+  },
+  "NavigationRoute": {
+    "name": "NavigationRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Display the navigation interface with a highlighted route, including directions and real-time guidance.",
+    "parameters": "startPoint: StartPoint? = nil\ndestinationPoint: DestinationPoint? = nil",
+    "returnType": "AppRoute (NavigationRoute)"
+  },
+  "setToolTipsListener": {
+    "name": "setToolTipsListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Notifies when a sequence of tooltips has been completed.",
+    "listenerName": "ToolTipsListener",
+    "methods": [
+      "onToolTipsSequenceCompleted()"
+    ]
+  },
+  "setLandingPageEventListener": {
+    "name": "setLandingPageEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events on the landing page including card selections and global search result interactions.",
+    "listenerName": "LandingPageEventListener",
+    "methods": [
+      "useCustomVenuePageForCardSelected() → Bool",
+      "onVenueCardSelected(venueId: String)",
+      "useCustomVenuePageForSearchResult() → Bool",
+      "onSearchResultVenueSelected(venueId: String)",
+      "useCustomBuildingPageForSearchResult() → Bool",
+      "onSearchResultBuildingSelected(buildingId: String)",
+      "useCustomPoiPageForSearchResult() → Bool",
+      "onSearchResultPoiSelected(poiId: String)",
+      "useCustomEventPageForSearchResult() → Bool",
+      "onSearchResultEventSelected(eventId: String)",
+      "useCustomCategoryPageForSearchResult() → Bool",
+      "onSearchResultCategorySelected(categoryKey:categoryName:venueId:buildingId:)"
+    ]
+  },
+  "setVenueEventListener": {
+    "name": "setVenueEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events within a venue context including close, building/POI/category selection and keyword search.",
+    "listenerName": "VenueEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "useCustomBuildingPage() → Bool",
+      "onBuildingSelected(buildingId: String)",
+      "useCustomPoiPage() → Bool",
+      "onPoiSelected(poiId: String)",
+      "useCustomCategoryPage() → Bool",
+      "onCategorySelected(categoryKey:categoryName:venueId:buildingId:)",
+      "useCustomKeywordSearch() → Bool",
+      "onKeywordSearchRequested(venueId: String)"
+    ]
+  },
+  "setBuildingEventListener": {
+    "name": "setBuildingEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events specific to a building context including close, POI/category selection, keyword search and direction requests.",
+    "listenerName": "BuildingEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "useCustomPoiPage() → Bool",
+      "onPoiSelected(poiId: String)",
+      "useCustomCategoryPage() → Bool",
+      "onCategorySelected(categoryKey:categoryName:venueId:buildingId:)",
+      "useCustomKeywordSearch() → Bool",
+      "onKeywordSearchRequested(venueId: String)",
+      "useCustomDirectionPage() → Bool",
+      "onDirectionRequested(destination: NavigationPoint)"
+    ]
+  },
+  "setPoiEventListener": {
+    "name": "setPoiEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events within a POI context including close, event selection and direction requests.",
+    "listenerName": "PoiEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "useCustomEventPage() → Bool",
+      "onEventSelected(eventId: String)",
+      "useCustomDirectionPage() → Bool",
+      "onDirectionRequested(destination: NavigationPoint)"
+    ]
+  },
+  "setCategorySearchEventListener": {
+    "name": "setCategorySearchEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events related to category search results including close and POI selection.",
+    "listenerName": "CategorySearchEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "useCustomPoiPage() → Bool",
+      "onPoiSelected(poiId: String)"
+    ]
+  },
+  "setEventListener": {
+    "name": "setEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events within an event context including close, POI selection and direction requests.",
+    "listenerName": "EventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "useCustomPoiPage() → Bool",
+      "onPoiSelected(poiId: String)",
+      "useCustomDirectionPage() → Bool",
+      "onDirectionRequested(destination: NavigationPoint)"
+    ]
+  },
+  "setKeywordSearchEventListener": {
+    "name": "setKeywordSearchEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events related to keyword search results including POI, event and category selection.",
+    "listenerName": "KeywordSearchEventListener",
+    "methods": [
+      "useCustomPoiPageForSearchResult() → Bool",
+      "onSearchResultPoiSelected(poiId: String)",
+      "useCustomEventPageForSearchResult() → Bool",
+      "onSearchResultEventSelected(eventId: String)",
+      "useCustomCategoryPageForSearchResult() → Bool",
+      "onSearchResultCategorySelected(categoryKey:categoryName:venueId:buildingId:)"
+    ]
+  },
+  "setMapEventListener": {
+    "name": "setMapEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles map interactions including venue, building, POI, event and location selection.",
+    "listenerName": "MapEventListener",
+    "methods": [
+      "useCustomVenuePage() → Bool",
+      "onVenueSelected(venueId: String)",
+      "useCustomBuildingPage() → Bool",
+      "onBuildingSelected(buildingId: String)",
+      "useCustomPoiPage() → Bool",
+      "onPoiSelected(poiId: String)",
+      "useCustomEventPage() → Bool",
+      "onEventSelected(eventId: String)",
+      "useCustomLocationPage() → Bool",
+      "onLocationSelected(coordinate: Coordinate)"
+    ]
+  },
+  "setNavigationEventListener": {
+    "name": "setNavigationEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events during navigation including close, navigation start and completion.",
+    "listenerName": "NavigationEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()",
+      "onNavigationStarted()",
+      "onNavigationCompleted()"
+    ]
+  },
+  "setRoutePlanningEventListener": {
+    "name": "setRoutePlanningEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles events during route planning including close action.",
+    "listenerName": "RoutePlanningEventListener",
+    "methods": [
+      "useCustomCloseAction() → Bool",
+      "onClose()"
+    ]
+  },
+  "setShareEventListener": {
+    "name": "setShareEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles share events for venue, building, event, POI and location.",
+    "listenerName": "ShareEventListener",
+    "methods": [
+      "onShareVenue(venueInfo:link:)",
+      "onShareBuilding(buildingInfo:link:)",
+      "onShareEvent(eventInfo:link:)",
+      "onSharePoi(poiInfo:link:)",
+      "onShareLocation(locationInfo:link:)"
+    ]
+  },
+  "setMenuEventListener": {
+    "name": "setMenuEventListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Handles menu close events.",
+    "listenerName": "MenuEventListener",
+    "methods": [
+      "onClose()"
+    ]
+  },
+  "setDataTrackingListener": {
+    "name": "setDataTrackingListener",
+    "dataType": "Listener",
+    "defaultValue": "nil",
+    "description": "Receives analytics callbacks for direction button clicks, navigation start clicks and end-of-route card display.",
+    "listenerName": "DataTrackingListener",
+    "methods": [
+      "onDirectionButtonClicked(data: EntityClickData)",
+      "onStartNavigationClicked(data: EntityClickData)",
+      "onEndOfRouteCardShown()"
+    ]
+  }
+}

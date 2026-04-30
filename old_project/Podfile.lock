@@ -1,0 +1,48 @@
+PODS:
+  - AFNetworking/NSURLSession (4.0.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/PrivacyResources (4.0.4)
+  - AFNetworking/Reachability (4.0.4):
+    - AFNetworking/PrivacyResources
+  - AFNetworking/Security (4.0.4):
+    - AFNetworking/PrivacyResources
+  - AFNetworking/Serialization (4.0.4):
+    - AFNetworking/PrivacyResources
+  - DropInUISDK (7.10.0):
+    - MapxusBaseSDK (= 8.4.0)
+  - MapxusBaseSDK (8.4.0):
+    - AFNetworking/NSURLSession (~> 4.0.4)
+    - AFNetworking/Reachability (~> 4.0.4)
+    - AFNetworking/Security (~> 4.0.4)
+    - AFNetworking/Serialization (~> 4.0.4)
+    - Secp256k1 (~> 1.0.0)
+    - YYModel (~> 1.0.6)
+  - Secp256k1 (1.0.0)
+  - YYModel (1.0.6)
+
+DEPENDENCIES:
+  - DropInUISDK (from `../integration-dropin-ui-sdk-ios`)
+
+SPEC REPOS:
+  https://github.com/Mapxus/mapxusSpecs.git:
+    - AFNetworking
+    - MapxusBaseSDK
+    - Secp256k1
+    - YYModel
+
+EXTERNAL SOURCES:
+  DropInUISDK:
+    :path: "../integration-dropin-ui-sdk-ios"
+
+SPEC CHECKSUMS:
+  AFNetworking: f5fafa33b848d7eba5c0c340e5408bac32d7294e
+  DropInUISDK: 1b84f16a5bd100784d31f038e069460ed65d37cd
+  MapxusBaseSDK: b1d176ad5fd20a618ba22943e7345303a8b75f45
+  Secp256k1: a42f2df74fee1df5620391b47c829d66d83c35b6
+  YYModel: 30b7632ef7764dd1b40ae0875740e71c4393445f
+
+PODFILE CHECKSUM: 50b4d2be942ddd0049ab661200341d18605ce938
+
+COCOAPODS: 1.16.2
