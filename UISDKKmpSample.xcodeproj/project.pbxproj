@@ -13,10 +13,10 @@
 /* Begin PBXFileReference section */
 		34F2C8952FA34C4F008A8E5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		34F387CF2F29C21800214216 /* UISDKKmpSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISDKKmpSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E034A442FD22FA5002995A1 /* BuildConfig/Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildConfig/Debug.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A452FD22FA5002995A1 /* BuildConfig/Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildConfig/Release.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A462FD22FA5002995A1 /* BuildConfig/Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildConfig/Secrets.example.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A472FD2309F002995A1 /* BuildConfig/Secrets.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildConfig/Secrets.local.xcconfig; sourceTree = SOURCE_ROOT; };
+		3E034A442FD22FA5002995A1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = BuildConfig/Debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		3E034A452FD22FA5002995A1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = BuildConfig/Release.xcconfig; sourceTree = SOURCE_ROOT; };
+		3E034A462FD22FA5002995A1 /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.example.xcconfig; path = BuildConfig/Secrets.example.xcconfig; sourceTree = SOURCE_ROOT; };
+		3E034A472FD2309F002995A1 /* Secrets.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.local.xcconfig; path = BuildConfig/Secrets.local.xcconfig; sourceTree = SOURCE_ROOT; };
 		594780334DAAAB312ACC4BA9 /* Pods-UISDKKmpSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.release.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.release.xcconfig"; sourceTree = "<group>"; };
 		66D8D71DA023F27649292B2E /* Pods_UISDKKmpSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UISDKKmpSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B4E43C09275B89656EA37D /* Pods-UISDKKmpSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.debug.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,10 +78,10 @@
 		3E034A432FD22E97002995A1 /* BuildConfig */ = {
 			isa = PBXGroup;
 			children = (
-				3E034A442FD22FA5002995A1 /* BuildConfig/Debug.xcconfig */,
-				3E034A452FD22FA5002995A1 /* BuildConfig/Release.xcconfig */,
-				3E034A462FD22FA5002995A1 /* BuildConfig/Secrets.example.xcconfig */,
-				3E034A472FD2309F002995A1 /* BuildConfig/Secrets.local.xcconfig */,
+				3E034A442FD22FA5002995A1 /* Debug.xcconfig */,
+				3E034A452FD22FA5002995A1 /* Release.xcconfig */,
+				3E034A462FD22FA5002995A1 /* Secrets.example.xcconfig */,
+				3E034A472FD2309F002995A1 /* Secrets.local.xcconfig */,
 			);
 			path = BuildConfig;
 			sourceTree = SOURCE_ROOT;
@@ -181,13 +181,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -231,7 +227,7 @@
 /* Begin XCBuildConfiguration section */
 		34F387E32F29C21A00214216 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E034A442FD22FA5002995A1 /* BuildConfig/Debug.xcconfig */;
+			baseConfigurationReference = 3E034A442FD22FA5002995A1 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -271,7 +267,7 @@
 		};
 		34F387E42F29C21A00214216 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E034A452FD22FA5002995A1 /* BuildConfig/Release.xcconfig */;
+			baseConfigurationReference = 3E034A452FD22FA5002995A1 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

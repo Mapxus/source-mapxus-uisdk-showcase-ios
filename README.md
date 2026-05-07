@@ -4,8 +4,6 @@
 
 `UISDKKmpSample` is a configuration-driven sample app for exploring and validating `DropInUISDK` features. It lets you pick a route, tweak config options, and attach a listener — then launch the SDK view to observe the result.
 
-For `DropInUISDK` integration documentation, refer to [https://doc-beta.mapxus.com/](https://doc-beta.mapxus.com/).
-
 ## Requirements
 
 - iOS 15.6 or later
