@@ -322,7 +322,7 @@ final class MainViewController: UIViewController {
                 return arr.isEmpty ? "[]" : arr.joined(separator: ", ")
             }
             return "nil"
-        case "AppearanceMode", "PoiSortingStrategy", "Language", "ShareDisplayMode":
+        case "AppearanceMode", "PoiSortingStrategy", "Language", "ShareDisplayMode", "FloorSwitchScope":
             if let obj = value as? NSObject, let name = obj.value(forKey: "name") as? String {
                 return name
             }

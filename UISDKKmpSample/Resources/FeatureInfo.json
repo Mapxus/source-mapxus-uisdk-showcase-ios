@@ -333,6 +333,12 @@
     "defaultValue": "nil",
     "description": "Style configuration for rendering selected building or shared floor borders on the map. When null, the default border style is used."
   },
+  "floorSwitchScope": {
+    "name": "floorSwitchScope",
+    "dataType": "FloorSwitchScope",
+    "defaultValue": "FloorSwitchScope.venue",
+    "description": "Defines the scope of the floor switch behavior. FloorSwitchScope.VENUE restricts floor switching to the current venue. FloorSwitchScope.GLOBAL allows floor switching across all venues. Default is FloorSwitchScope.VENUE."
+  },
   "mapLabelsConfig": {
     "name": "mapLabelsConfig",
     "dataType": "MapLabelsConfig?",

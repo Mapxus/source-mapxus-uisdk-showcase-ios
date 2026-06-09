@@ -28,7 +28,7 @@ enum FeatureConstants {
 
     /// 功能列表（分类标题 -> 功能名称数组）
     static let featureList: [String: [String]] = [
-        "🌍 Map Basics": ["initialBounds", "mapBoundsRestriction", "initialMapBearing", "mapStyle", "mapStyleDark", "initialMapPitch", "selectedBuildingBorderStyle"],
+        "🌍 Map Basics": ["initialBounds", "mapBoundsRestriction", "initialMapBearing", "mapStyle", "mapStyleDark", "initialMapPitch", "selectedBuildingBorderStyle", "floorSwitchScope"],
         "🎨 UI Appearance & Theming": ["appearanceMode", "colors", "shapes", "materialResourcePath"],
         "📍 POI Configuration": ["fixedDisplayCategories", "poiDetailSections", "recommendedCategories", "recommendedPoiIds", "poiSorting", "categoryListConfig"],
         "🏢 Venue Settings": ["isBuildingListVisible", "buildingSectionTitle", "venueHighlightedShopTitle", "floorSelectorCategories", "venueDefaultSharedFloorIds", "sharedFloorsUnifiedNames", "venueAnchorPoiConfigs", "venueLevelFacilityInfoConfig"],
@@ -104,6 +104,7 @@ enum FeatureConstants {
         "shareDisplayMode": ShareDisplayModeViewController.self,
         "mapLabelsConfig": MapLabelsConfigViewController.self,
         "selectedBuildingBorderStyle": SelectedBuildingBorderStyleViewController.self,
+        "floorSwitchScope": FloorSwitchScopeViewController.self,
         "LandingPageRoute": LandingPageRouteViewController.self,
         "VenueDetailRoute": VenueDetailRouteViewController.self,
         "BuildingDetailRoute": BuildingDetailRouteViewController.self,
