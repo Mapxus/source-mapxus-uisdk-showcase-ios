@@ -5,10 +5,10 @@
 //  poiSorting 功能详情页
 //  Name: poiSorting
 //  Type: PoiSortingStrategy
-//  Default: PoiSortingStrategy.byNameAlphabetically
+//  Default: PoiSortingStrategy.byDefault
 //  Description: Sorting strategy for POIs displayed on category pages.
 //  Determines the order in which users browse and find relevant points.
-//  Default is [PoiSortingStrategy.ByNameAlphabetically].
+//  Default is [PoiSortingStrategy.byDefault].
 //
 
 import UIKit
@@ -17,7 +17,14 @@ import DropInUISDK
 
 final class PoiSortingViewController: BaseFeatureViewController {
 
-    private let segmentedControl = UISegmentedControl()
+    /// 单个可选项的视图与其选中标记
+    private struct OptionRow {
+        let container: UIView
+        let checkmark: UIImageView
+    }
+
+    private var optionRows: [OptionRow] = []
+    private var selectedIndex: Int = 0
 
     private var allCases: [PoiSortingStrategy] { PoiSortingStrategy.allCases }
 
@@ -59,54 +66,107 @@ final class PoiSortingViewController: BaseFeatureViewController {
         addParameterSection(to: content, views: row)
 
         let current = currentPoiSorting()
-        if let index = allCases.firstIndex(of: current) {
-            segmentedControl.selectedSegmentIndex = index
-        } else {
-            segmentedControl.selectedSegmentIndex = 0
-        }
+        selectedIndex = allCases.firstIndex(of: current) ?? 0
+        updateSelectionUI()
     }
 
     override func saveBarButtonTapped() {
-        let index = segmentedControl.selectedSegmentIndex
-        guard index >= 0, index < allCases.count else { return }
-        let value = allCases[index]
+        guard selectedIndex >= 0, selectedIndex < allCases.count else { return }
+        let value = allCases[selectedIndex]
         Config.shared.diConfig.poiSorting = value
         Config.shared.saveChange([featureName: value])
         super.saveBarButtonTapped()
     }
 
-    /// Reads current poiSorting from Config, falling back to .byNameAlphabetically.
+    /// Reads current poiSorting from Config, falling back to .byDefault.
     private func currentPoiSorting() -> PoiSortingStrategy {
         let raw = Config.shared.configValue(forKey: featureName)
             ?? Config.shared.defaultValue(forKey: featureName)
         if let strategy = raw as? PoiSortingStrategy { return strategy }
         if let objcStrategy = raw as? __PoiSortingStrategy { return objcStrategy.toSwiftEnum() }
-        return .byNameAlphabetically
+        return .byDefault
     }
 
     private func inputRowView() -> UIView {
-        let container = UIView()
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 12
+        container.alignment = .fill
+
         let label = UILabel()
         label.text = "poiSorting :"
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .label
+        container.addArrangedSubview(label)
 
-        segmentedControl.removeAllSegments()
+        let optionsStack = UIStackView()
+        optionsStack.axis = .vertical
+        optionsStack.spacing = 8
+        optionsStack.alignment = .fill
+
+        optionRows = []
         for (index, strategy) in allCases.enumerated() {
-            segmentedControl.insertSegment(withTitle: strategy.name, at: index, animated: false)
+            let row = makeOptionRow(title: strategy.name, index: index)
+            optionsStack.addArrangedSubview(row.container)
+            optionRows.append(row)
         }
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.apportionsSegmentWidthsByContent = true
-
-        container.addSubview(label)
-        container.addSubview(segmentedControl)
-        label.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(12)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
+        container.addArrangedSubview(optionsStack)
         return container
+    }
+
+    /// 创建一条可点击的选项行（左侧名称、右侧选中打勾）
+    private func makeOptionRow(title: String, index: Int) -> OptionRow {
+        let row = UIView()
+        row.backgroundColor = .tertiarySystemFill
+        row.layer.cornerRadius = 8
+        row.tag = index
+        row.isUserInteractionEnabled = true
+
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.textColor = .label
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
+
+        let checkmark = UIImageView(image: UIImage(systemName: "checkmark"))
+        checkmark.tintColor = .systemBlue
+        checkmark.contentMode = .scaleAspectFit
+        checkmark.setContentHuggingPriority(.required, for: .horizontal)
+        checkmark.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        row.addSubview(titleLabel)
+        row.addSubview(checkmark)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(12)
+            make.top.bottom.equalToSuperview().inset(12)
+        }
+        checkmark.snp.makeConstraints { make in
+            make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(18)
+        }
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(optionTapped(_:)))
+        row.addGestureRecognizer(tap)
+        return OptionRow(container: row, checkmark: checkmark)
+    }
+
+    @objc private func optionTapped(_ gesture: UITapGestureRecognizer) {
+        guard let index = gesture.view?.tag else { return }
+        selectedIndex = index
+        updateSelectionUI()
+    }
+
+    /// 根据 selectedIndex 刷新各选项的选中样式
+    private func updateSelectionUI() {
+        for (index, row) in optionRows.enumerated() {
+            let isSelected = index == selectedIndex
+            row.checkmark.isHidden = !isSelected
+            row.container.backgroundColor = isSelected
+                ? UIColor.systemBlue.withAlphaComponent(0.12)
+                : .tertiarySystemFill
+        }
     }
 }

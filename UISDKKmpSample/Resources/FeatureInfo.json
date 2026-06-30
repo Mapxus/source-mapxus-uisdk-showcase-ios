@@ -120,8 +120,8 @@
   "poiSorting": {
     "name": "poiSorting",
     "dataType": "PoiSortingStrategy",
-    "defaultValue": "PoiSortingStrategy.byNameAlphabetically",
-    "description": "Sorting strategy for POIs displayed on category pages. Determines the order in which users browse and find relevant points. Default is PoiSortingStrategy.ByNameAlphabetically."
+    "defaultValue": "PoiSortingStrategy.byDefault",
+    "description": "Sorting strategy for POIs displayed on category pages. Determines the order in which users browse and find relevant points. Default is PoiSortingStrategy.byDefault."
   },
   "categoryListConfig": {
     "name": "categoryListConfig",
