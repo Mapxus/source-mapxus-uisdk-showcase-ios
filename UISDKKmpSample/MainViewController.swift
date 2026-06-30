@@ -409,12 +409,12 @@ final class MainViewController: UIViewController {
             return formatKeyValues(obj, keys: ["buttonShapeCornerSize", "imageShapeCornerSize", "searchBarShapeCornerSize", "bottomSheetShapeCornerSize", "popupCardShapeCornerSize"])
         case "StringsWithLanguage?", "StringsWithLanguage":
             guard let obj = value as? NSObject else { return "TODO" }
-            let langKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+            let langKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
             return formatKeyValues(obj, keys: langKeys, skipEmptyStrings: true)
         case "ToolTipsConfig?":
             guard let obj = value as? NSObject else { return "TODO" }
             let isEnabled = (obj.value(forKey: "isEnabled") as? NSNumber)?.boolValue ?? false
-            let langKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+            let langKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
             var parts: [String] = ["isEnabled:\(isEnabled ? "true" : "false")"]
             if let title = obj.value(forKey: "title") as? NSObject {
                 let t = formatKeyValues(title, keys: langKeys, skipEmptyStrings: true)
@@ -447,7 +447,7 @@ final class MainViewController: UIViewController {
             if sorted.isEmpty {
                 return "[]"
             }
-            let langKeysForUnified = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+            let langKeysForUnified = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
             let blocks: [String] = sorted.map { obj in
                 let venueId = (obj.value(forKey: "venueId") as? String) ?? ""
                 let unified = obj.value(forKey: "unifiedName") as? NSObject

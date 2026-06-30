@@ -18,7 +18,7 @@ final class PublicHolidayDisplayNameViewController: BaseFeatureViewController {
     private var textFields: [UITextField] = []
 
     private enum StringsField {
-        static let labels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+        static let labels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
         static func value(at index: Int, from strings: StringsWithLanguage) -> String? {
             switch index {
             case 0: return strings.default
@@ -29,6 +29,8 @@ final class PublicHolidayDisplayNameViewController: BaseFeatureViewController {
             case 5: return strings.zhHant
             case 6: return strings.zhHantTW
             case 7: return strings.ar
+            case 8: return strings.fr
+            case 9: return strings.it
             default: return nil
             }
         }
@@ -90,7 +92,9 @@ final class PublicHolidayDisplayNameViewController: BaseFeatureViewController {
             zhHans: optValues[4],
             zhHant: optValues[5],
             zhHantTW: optValues[6],
-            ar: optValues[7]
+            ar: optValues[7],
+            fr: optValues[8],
+            it: optValues[9]
         )
         Config.shared.diConfig.publicHolidayDisplayName = strings
         Config.shared.saveChange([featureName: strings])

@@ -34,7 +34,7 @@ final class ToolTipsConfigViewController: BaseFeatureViewController {
     private var htmlFieldsContainer: UIView?
 
     private enum StringsField {
-        static let labels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+        static let labels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
     }
 
     required init(featureName: String) {
@@ -170,7 +170,9 @@ final class ToolTipsConfigViewController: BaseFeatureViewController {
             strings.zhHans,
             strings.zhHant,
             strings.zhHantTW,
-            strings.ar
+            strings.ar,
+            strings.fr,
+            strings.it
         ]
         for (idx, value) in values.enumerated() where idx < fields.count {
             fields[idx].text = value
@@ -191,7 +193,9 @@ final class ToolTipsConfigViewController: BaseFeatureViewController {
             zhHans: optValues[4],
             zhHant: optValues[5],
             zhHantTW: optValues[6],
-            ar: optValues[7]
+            ar: optValues[7],
+            fr: optValues[8],
+            it: optValues[9]
         )
     }
 

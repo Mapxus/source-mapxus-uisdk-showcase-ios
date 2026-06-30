@@ -23,7 +23,7 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
     private var entryCards: [EntryCard] = []
 
     private static let maxEntryCount = 10
-    private static let unifiedNameLabels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+    private static let unifiedNameLabels = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
 
     private enum EntriesValidationError: LocalizedError {
         case invalidEntry
@@ -94,7 +94,7 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
                 let card = addEntryCard()
                 card.venueIdField.text = config.venueId
                 let un = config.unifiedName
-                let kvcKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar"]
+                let kvcKeys = ["default", "en", "ja", "ko", "zhHans", "zhHant", "zhHantTW", "ar", "fr", "it"]
                 let unObj = un as NSObject?
                 for (index, key) in kvcKeys.enumerated() where index < card.unifiedNameFields.count {
                     card.unifiedNameFields[index].text = unObj?.value(forKey: key) as? String
@@ -167,7 +167,9 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
                 zhHans: optValues[4],
                 zhHant: optValues[5],
                 zhHantTW: optValues[6],
-                ar: optValues[7]
+                ar: optValues[7],
+                fr: optValues[8],
+                it: optValues[9]
             )
             let item = SharedFloorsUnifiedName(venueId: venueId, unifiedName: strings)
             results.append(item)
