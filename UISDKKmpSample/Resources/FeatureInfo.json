@@ -321,6 +321,12 @@
     "defaultValue": "false",
     "description": "Whether to display the venue back button on the venue page. This button allows users to navigate back from the venue context. Default is false."
   },
+  "enableVisualMap": {
+    "name": "enableVisualMap",
+    "dataType": "Boolean",
+    "defaultValue": "false",
+    "description": "Determines whether the VisualMap button is displayed. When true, the VisualMap button is shown in the UI. Default is false."
+  },
   "shareDisplayMode": {
     "name": "shareDisplayMode",
     "dataType": "ShareDisplayMode",
