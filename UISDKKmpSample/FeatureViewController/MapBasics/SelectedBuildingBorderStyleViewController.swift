@@ -2,7 +2,7 @@
 //  SelectedBuildingBorderStyleViewController.swift
 //  UISDKKmpSample
 //
-//  selectedBuildingBorderStyle 功能详情页
+//  selectedBuildingBorderStyle feature detail page
 //  Name: selectedBuildingBorderStyle
 //  Type: BorderStyle?
 //  Default: null

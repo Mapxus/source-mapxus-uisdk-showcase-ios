@@ -95,7 +95,7 @@ GEM
     commander (4.6.0)
       highline (~> 2.0.0)
     concurrent-ruby (1.3.6)
-    connection_pool (3.0.2)
+    connection_pool (2.5.5)
     csv (3.3.5)
     declarative (0.0.20)
     digest-crc (0.7.0)
@@ -275,7 +275,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.27.0)
     molinillo (0.8.0)
-    multi_json (1.20.0)
+    multi_json (1.19.1)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
     nanaimo (0.4.0)
@@ -400,7 +400,7 @@ CHECKSUMS
   colored2 (3.1.2) sha256=b13c2bd7eeae2cf7356a62501d398e72fde78780bd26aec6a979578293c28b4a
   commander (4.6.0) sha256=7d1ddc3fccae60cc906b4131b916107e2ef0108858f485fdda30610c0f2913d9
   concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
-  connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
+  connection_pool (2.5.5) sha256=e54ff92855753df1fd7c59fa04a398833355f27dd14c074f8c83a05f72a716ad
   csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   declarative (0.0.20) sha256=8021dd6cb17ab2b61233c56903d3f5a259c5cf43c80ff332d447d395b17d9ff9
   digest-crc (0.7.0) sha256=64adc23a26a241044cbe6732477ca1b3c281d79e2240bcff275a37a5a0d78c07
@@ -469,7 +469,7 @@ CHECKSUMS
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (5.27.0) sha256=2d3b17f8a36fe7801c1adcffdbc38233b938eb0b4966e97a6739055a45fa77d5
   molinillo (0.8.0) sha256=efbff2716324e2a30bccd3eba1ff3a735f4d5d53ffddbc6a2f32c0ca9433045d
-  multi_json (1.20.0) sha256=c64106fae5114bd7f388d42d7b52ebb83d7726426d47a35ad5099e35bb923e41
+  multi_json (1.19.1) sha256=7aefeff8f2c854bf739931a238e4aea64592845e0c0395c8a7d2eea7fdd631b7
   multipart-post (2.4.1) sha256=9872d03a8e552020ca096adadbf5e3cb1cd1cdd6acd3c161136b8a5737cdb4a8
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
   nanaimo (0.4.0) sha256=faf069551bab17f15169c1f74a1c73c220657e71b6e900919897a10d991d0723
@@ -515,4 +515,4 @@ CHECKSUMS
   xcpretty-travis-formatter (1.0.1) sha256=aacc332f17cb7b2cba222994e2adc74223db88724fe76341483ad3098e232f93
 
 BUNDLED WITH
-  4.0.1
+   2.5.11

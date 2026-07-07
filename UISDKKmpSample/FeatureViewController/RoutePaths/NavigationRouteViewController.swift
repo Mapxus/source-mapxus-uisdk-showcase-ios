@@ -2,7 +2,7 @@
 //  NavigationRouteViewController.swift
 //  UISDKKmpSample
 //
-//  NavigationRoute 功能详情页
+//  NavigationRoute feature detail page
 //  Name: NavigationRoute
 //  Type: AppRoute
 //

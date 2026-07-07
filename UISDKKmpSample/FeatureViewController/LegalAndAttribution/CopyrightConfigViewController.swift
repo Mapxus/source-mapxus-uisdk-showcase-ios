@@ -2,7 +2,7 @@
 //  CopyrightConfigViewController.swift
 //  UISDKKmpSample
 //
-//  copyrightConfig 功能详情页
+//  copyrightConfig feature detail page
 //  Name: copyrightConfig
 //  Type: CopyrightConfig?
 //  Default: nil

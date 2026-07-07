@@ -2,7 +2,7 @@
 //  VenueAnchorPoiConfigsViewController.swift
 //  UISDKKmpSample
 //
-//  venueAnchorPoiConfigs 功能详情页
+//  venueAnchorPoiConfigs feature detail page
 //  Name: venueAnchorPoiConfigs
 //  Type: [VenueAnchorPoiConfig]?
 //  Default: nil
@@ -83,7 +83,7 @@ final class VenueAnchorPoiConfigsViewController: BaseFeatureViewController {
         addParameterSection(to: content, views: selectorRow, spacer, listContainer)
 
         let current = Config.shared.configValue(forKey: featureName) as? [VenueAnchorPoiConfig]
-        // 注意：长度为 0 的数组依然视为「列表」而不是 nil
+        // Note: an array with length 0 is still treated as a list, not nil
         if let configs = current {
             segmentControl.selectedSegmentIndex = 1
             listContainer.isHidden = false
@@ -120,12 +120,12 @@ final class VenueAnchorPoiConfigsViewController: BaseFeatureViewController {
     }
 
     private func validateAndBuild() -> (error: Error?, configs: [VenueAnchorPoiConfig]?) {
-        // segment 选中 nil，直接返回 nil
+        // When the segment selects nil, return nil directly
         guard segmentControl.selectedSegmentIndex != 0 else {
             return (nil, nil)
         }
 
-        // 未添加任何 entry，视为空数组（长度 0 合法）
+        // When no entries are added, treat it as an empty array; length 0 is valid
         guard !entryCards.isEmpty else {
             return (nil, [])
         }
@@ -141,7 +141,7 @@ final class VenueAnchorPoiConfigsViewController: BaseFeatureViewController {
                 .filter { !$0.isEmpty }
             let capped = Array(ids.prefix(Self.maxPoiIdsPerEntry))
 
-            // 每个卡片必须同时填 venueId 和至少一个 poiId
+            // Each card must include both venueId and at least one poiId
             guard !venueId.isEmpty, !capped.isEmpty else {
                 return (EntriesValidationError.invalidEntry, nil)
             }

@@ -2,7 +2,7 @@
 //  InitialBoundsViewController.swift
 //  UISDKKmpSample
 //
-//  initialBounds 功能详情页
+//  initialBounds feature detail page
 //
 
 import UIKit

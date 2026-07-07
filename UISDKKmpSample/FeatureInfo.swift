@@ -2,7 +2,7 @@
 //  FeatureInfo.swift
 //  UISDKKmpSample
 //
-//  功能描述表，从 JSON 读取并展示
+//  Feature description table loaded from JSON and displayed
 //
 
 import Foundation

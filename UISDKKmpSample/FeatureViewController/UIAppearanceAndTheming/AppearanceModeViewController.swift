@@ -2,7 +2,7 @@
 //  AppearanceModeViewController.swift
 //  UISDKKmpSample
 //
-//  appearanceMode 功能详情页
+//  appearanceMode feature detail page
 //  Name: appearanceMode
 //  Type: AppearanceMode
 //  Default: AppearanceMode.light

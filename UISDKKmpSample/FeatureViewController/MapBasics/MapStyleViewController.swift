@@ -2,7 +2,7 @@
 //  MapStyleViewController.swift
 //  UISDKKmpSample
 //
-//  mapStyle 功能详情页
+//  mapStyle feature detail page
 //  Name: mapStyle
 //  Type: String
 //  Default: "drop_in_ui_v2_25d"

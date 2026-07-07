@@ -2,7 +2,7 @@
 //  InitialMapPitchViewController.swift
 //  UISDKKmpSample
 //
-//  initialMapPitch 功能详情页
+//  initialMapPitch feature detail page
 //  Name: initialMapPitch
 //  Type: Double
 //  Default: 0.0

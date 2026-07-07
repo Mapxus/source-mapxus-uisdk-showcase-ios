@@ -2,7 +2,7 @@
 //  MapLabelsConfigViewController.swift
 //  UISDKKmpSample
 //
-//  mapLabelsConfig 功能详情页
+//  mapLabelsConfig feature detail page
 //  Name: mapLabelsConfig
 //  Type: MapLabelsConfig?
 //  Default: null

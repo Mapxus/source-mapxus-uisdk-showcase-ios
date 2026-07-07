@@ -2,7 +2,7 @@
 //  MapStyleDarkViewController.swift
 //  UISDKKmpSample
 //
-//  mapStyleDark 功能详情页
+//  mapStyleDark feature detail page
 //  Name: mapStyleDark
 //  Type: String
 //  Default: "mapxus_v8_dark"

@@ -2,7 +2,7 @@
 //  SearchVenuesByNameViewController.swift
 //  UISDKKmpSample
 //
-//  searchVenuesByName 功能详情页
+//  searchVenuesByName feature detail page
 //
 
 import UIKit

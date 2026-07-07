@@ -2,7 +2,7 @@
 //  NavigationModesViewController.swift
 //  UISDKKmpSample
 //
-//  navigationModes 功能详情页
+//  navigationModes feature detail page
 //  Name: navigationModes
 //  Type: [NavigationMode]
 //  Default: defaultNavigationModes
@@ -81,7 +81,7 @@ final class NavigationModesViewController: BaseFeatureViewController {
         let isDefault = current == default_
 
         selectedModes = current
-        // NavigationMode 目前没有在项目中直接使用，假设通过 allCases 获取全部可用模式
+        // NavigationMode is not directly used in the project, so assume allCases provides all available modes
         let allModes = Array(NavigationMode.allCases)
         availableModes = allModes.filter { !current.contains($0) }
 
@@ -163,7 +163,7 @@ final class NavigationModesViewController: BaseFeatureViewController {
 
     private static let tableRowHeight: CGFloat = 44
     private static let tableSectionHeaderHeight: CGFloat = 28
-    /// 每个 section 上方的固定间隔（UITableView plain 样式）
+    /// Fixed spacing above each section for the UITableView plain style
     private static let tableSectionTopGap: CGFloat = 22
 
     private func reloadTable() {

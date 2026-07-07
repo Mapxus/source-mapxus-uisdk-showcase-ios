@@ -2,7 +2,7 @@
 //  FloorSwitchScopeViewController.swift
 //  UISDKKmpSample
 //
-//  floorSwitchScope 功能详情页
+//  floorSwitchScope feature detail page
 //  Name: floorSwitchScope
 //  Type: FloorSwitchScope
 //  Default: FloorSwitchScope.venue

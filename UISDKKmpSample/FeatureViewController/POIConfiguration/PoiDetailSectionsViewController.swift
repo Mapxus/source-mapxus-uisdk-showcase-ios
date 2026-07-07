@@ -2,7 +2,7 @@
 //  PoiDetailSectionsViewController.swift
 //  UISDKKmpSample
 //
-//  poiDetailSections 功能详情页
+//  poiDetailSections feature detail page
 //  Name: poiDetailSections
 //  Type: [PoiDetailSection]
 //  Default: defaultPoiDetailInfos
@@ -159,7 +159,7 @@ final class PoiDetailSectionsViewController: BaseFeatureViewController {
 
     private static let tableRowHeight: CGFloat = 44
     private static let tableSectionHeaderHeight: CGFloat = 28
-    /// 每个 section 上方的固定间隔（UITableView plain 样式）
+    /// Fixed spacing above each section for the UITableView plain style
     private static let tableSectionTopGap: CGFloat = 22
 
     private func reloadTable() {

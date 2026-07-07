@@ -2,7 +2,7 @@
 //  PoiSortingViewController.swift
 //  UISDKKmpSample
 //
-//  poiSorting 功能详情页
+//  poiSorting feature detail page
 //  Name: poiSorting
 //  Type: PoiSortingStrategy
 //  Default: PoiSortingStrategy.byDefault
@@ -17,7 +17,7 @@ import DropInUISDK
 
 final class PoiSortingViewController: BaseFeatureViewController {
 
-    /// 单个可选项的视图与其选中标记
+    /// View and selection indicator for a single option
     private struct OptionRow {
         let container: UIView
         let checkmark: UIImageView
@@ -114,7 +114,7 @@ final class PoiSortingViewController: BaseFeatureViewController {
         return container
     }
 
-    /// 创建一条可点击的选项行（左侧名称、右侧选中打勾）
+    /// Creates a tappable option row with the name on the left and a checkmark on the right
     private func makeOptionRow(title: String, index: Int) -> OptionRow {
         let row = UIView()
         row.backgroundColor = .tertiarySystemFill
@@ -159,7 +159,7 @@ final class PoiSortingViewController: BaseFeatureViewController {
         updateSelectionUI()
     }
 
-    /// 根据 selectedIndex 刷新各选项的选中样式
+    /// Refreshes each option selection style based on selectedIndex
     private func updateSelectionUI() {
         for (index, row) in optionRows.enumerated() {
             let isSelected = index == selectedIndex

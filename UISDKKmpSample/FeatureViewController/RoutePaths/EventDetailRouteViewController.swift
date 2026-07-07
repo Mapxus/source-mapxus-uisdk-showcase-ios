@@ -2,7 +2,7 @@
 //  EventDetailRouteViewController.swift
 //  UISDKKmpSample
 //
-//  EventDetailRoute 功能详情页
+//  EventDetailRoute feature detail page
 //  Name: EventDetailRoute
 //  Type: AppRoute
 //

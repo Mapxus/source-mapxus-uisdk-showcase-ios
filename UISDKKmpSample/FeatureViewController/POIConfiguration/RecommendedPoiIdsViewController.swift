@@ -2,7 +2,7 @@
 //  RecommendedPoiIdsViewController.swift
 //  UISDKKmpSample
 //
-//  recommendedPoiIds 功能详情页
+//  recommendedPoiIds feature detail page
 //  Name: recommendedPoiIds
 //  Type: [String]?
 //  Default: nil

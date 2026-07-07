@@ -2,7 +2,7 @@
 //  VenueHighlightedShopTitleViewController.swift
 //  UISDKKmpSample
 //
-//  venueHighlightedShopTitle 功能详情页
+//  venueHighlightedShopTitle feature detail page
 //  Name: venueHighlightedShopTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

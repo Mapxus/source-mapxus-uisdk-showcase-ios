@@ -2,7 +2,7 @@
 //  RecommendedCategoriesViewController.swift
 //  UISDKKmpSample
 //
-//  recommendedCategories 功能详情页
+//  recommendedCategories feature detail page
 //  Name: recommendedCategories
 //  Type: [String]?
 //  Default: nil

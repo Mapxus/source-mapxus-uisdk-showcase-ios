@@ -2,7 +2,7 @@
 //  FloorSelectorCategoriesViewController.swift
 //  UISDKKmpSample
 //
-//  floorSelectorCategories 功能详情页
+//  floorSelectorCategories feature detail page
 //  Name: floorSelectorCategories
 //  Type: [String]?
 //  Default: nil

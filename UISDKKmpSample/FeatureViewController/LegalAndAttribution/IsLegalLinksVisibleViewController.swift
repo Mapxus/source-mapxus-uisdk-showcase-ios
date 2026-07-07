@@ -2,7 +2,7 @@
 //  IsLegalLinksVisibleViewController.swift
 //  UISDKKmpSample
 //
-//  isLegalLinksVisible 功能详情页
+//  isLegalLinksVisible feature detail page
 //  Name: isLegalLinksVisible
 //  Type: Boolean
 //  Default: true

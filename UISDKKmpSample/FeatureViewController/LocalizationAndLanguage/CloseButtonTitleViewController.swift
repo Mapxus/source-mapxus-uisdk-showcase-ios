@@ -2,7 +2,7 @@
 //  CloseButtonTitleViewController.swift
 //  UISDKKmpSample
 //
-//  closeButtonTitle 功能详情页
+//  closeButtonTitle feature detail page
 //  Name: closeButtonTitle
 //  Type: StringsWithLanguage?
 //  Default: nil
@@ -179,7 +179,7 @@ final class CloseButtonTitleViewController: BaseFeatureViewController {
         }
         container.addArrangedSubview(segmentWrapper)
 
-        // 2 个 segment 时等宽更美观
+        // Equal widths look better when there are two segments
         segmentControl.apportionsSegmentWidthsByContent = false
         return container
     }

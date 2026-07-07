@@ -2,7 +2,7 @@
 //  ShapesViewController.swift
 //  UISDKKmpSample
 //
-//  shapes 功能详情页
+//  shapes feature detail page
 //
 
 import UIKit
@@ -13,7 +13,7 @@ final class ShapesViewController: BaseFeatureViewController {
 
     private var shapeTextFields: [UITextField] = []
 
-    /// 属性名与 Shape.kt 一致（corner radius in dp）
+    /// Property names match Shape.kt, with corner radius in dp
     private enum ShapeField {
         static let keys = [
             "buttonShapeCornerSize",
@@ -100,7 +100,7 @@ final class ShapesViewController: BaseFeatureViewController {
         }
     }
 
-    /// 校验：每个属性必填且为合法数字；通过则生成新的 DIShapes。
+    /// Validation: each property is required and must be a valid number; when validation passes, a new DIShapes is generated.
     private func validateAndBuildShapes() -> Result<DIShapes, Error> {
         let values = shapeTextFields.map { ($0.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines) }
         guard values.allSatisfy({ !$0.isEmpty }) else {
@@ -190,7 +190,7 @@ final class ShapesViewController: BaseFeatureViewController {
     }
 }
 
-// MARK: - UITextFieldDelegate（仅允许数字输入，含一位小数点）
+// MARK: - UITextFieldDelegate (allows numeric input with one decimal point only)
 extension ShapesViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty { return true }

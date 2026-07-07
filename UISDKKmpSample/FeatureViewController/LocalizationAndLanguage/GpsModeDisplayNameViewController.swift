@@ -2,7 +2,7 @@
 //  GpsModeDisplayNameViewController.swift
 //  UISDKKmpSample
 //
-//  gpsModeDisplayName 功能详情页
+//  gpsModeDisplayName feature detail page
 //  Name: gpsModeDisplayName
 //  Type: StringsWithLanguage?
 //  Default: nil
@@ -106,7 +106,7 @@ final class GpsModeDisplayNameViewController: BaseFeatureViewController {
         }
 
         let values = textFields.map { ($0.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines) }
-        // 支持显式空字符串：输入 \"\" 表示空字符串，留空表示 nil
+        // Supports an explicit empty string: enter \"\" for an empty string, or leave blank for nil
         let optValues: [String?] = values.map { s in
             if s.isEmpty { return nil }
             if s == "\"\"" { return "" }
@@ -162,7 +162,7 @@ final class GpsModeDisplayNameViewController: BaseFeatureViewController {
         }
         container.addArrangedSubview(segmentWrapper)
 
-        // 2 个 segment 时等宽更美观
+        // Equal widths look better when there are two segments
         segmentControl.apportionsSegmentWidthsByContent = false
         return container
     }

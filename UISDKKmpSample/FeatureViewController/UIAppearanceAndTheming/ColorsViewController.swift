@@ -2,7 +2,7 @@
 //  ColorsViewController.swift
 //  UISDKKmpSample
 //
-//  colors 功能详情页
+//  colors feature detail page
 //
 
 import UIKit

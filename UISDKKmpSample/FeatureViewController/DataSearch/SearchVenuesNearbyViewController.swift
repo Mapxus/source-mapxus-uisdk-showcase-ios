@@ -2,7 +2,7 @@
 //  SearchVenuesNearbyViewController.swift
 //  UISDKKmpSample
 //
-//  searchVenuesNearby 功能详情页
+//  searchVenuesNearby feature detail page
 //
 
 import UIKit

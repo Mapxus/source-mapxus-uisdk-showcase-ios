@@ -11,7 +11,7 @@
 #
 
 
-# 指定项目的scheme名称
+# Specify the project scheme name
 scheme = "UISDKKmpSample"
 icon_path = './UISDKKmpSample/Assets.xcassets/AppIcon.appiconset/1024.png'
 ipa_dir = "./fastlane_build"
@@ -35,10 +35,10 @@ platform :ios do
   before_all do |lane|
     ensure_local_secrets_config!
 
-    # 清理编译文件
+    # Clean build artifacts
     clear_derived_data
 
-    # 安装第三方库
+    # Install third-party dependencies
     cocoapods(use_bundle_exec: true, repo_update: true)
 
   end
@@ -52,11 +52,11 @@ platform :ios do
 
     bundle_id = "com.mapxus.uisdk-showcase.ios"
 
-    # development证书也要一起请求，否则Xcode的自动签名功能会自动生成开发证书，导致证书过多
+    # Request the development certificate as well; otherwise, Xcode automatic signing may create extra development certificates
     match(type: "development", app_identifier: bundle_id)
     match(type: "adhoc", app_identifier: bundle_id)
 
-    # gym用来编译 打包 签名
+    # Use gym to build, package, and sign the app
     gym(
       output_directory: ipa_dir,
       output_name: ipa_name,

@@ -2,7 +2,7 @@
 //  FilterChipsConfigViewController.swift
 //  UISDKKmpSample
 //
-//  filterChipsConfig 功能详情页
+//  filterChipsConfig feature detail page
 //  Name: filterChipsConfig
 //  Type: FilterChipsConfig?
 //  Default: nil
@@ -250,7 +250,7 @@ final class FilterChipsConfigViewController: BaseFeatureViewController {
         }
 
         func prefill(menu: MenuConfig) {
-            resetToNil()  // root/additional 未暴露属性，无法读取
+            resetToNil()  // root/additional properties are not exposed and cannot be read
         }
 
         func resetToNil() {

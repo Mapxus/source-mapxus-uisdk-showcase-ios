@@ -2,7 +2,7 @@
 //  EventOverviewTitleViewController.swift
 //  UISDKKmpSample
 //
-//  eventOverviewTitle 功能详情页
+//  eventOverviewTitle feature detail page
 //  Name: eventOverviewTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

@@ -2,7 +2,7 @@
 //  GlobalFilterTagIdsViewController.swift
 //  UISDKKmpSample
 //
-//  globalFilterTagIds 功能详情页
+//  globalFilterTagIds feature detail page
 //  Name: globalFilterTagIds
 //  Type: [String]?
 //  Default: nil

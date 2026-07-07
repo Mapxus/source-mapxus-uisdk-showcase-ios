@@ -2,7 +2,7 @@
 //  IsShoplusButtonVisibleViewController.swift
 //  UISDKKmpSample
 //
-//  isShoplusButtonVisible 功能详情页
+//  isShoplusButtonVisible feature detail page
 //  Name: isShoplusButtonVisible
 //  Type: Boolean
 //  Default: true

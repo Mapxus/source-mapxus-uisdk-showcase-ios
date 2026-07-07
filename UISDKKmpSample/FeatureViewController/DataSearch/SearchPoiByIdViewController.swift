@@ -2,7 +2,7 @@
 //  SearchPoiByIdViewController.swift
 //  UISDKKmpSample
 //
-//  searchPoiById 功能详情页
+//  searchPoiById feature detail page
 //
 
 import UIKit

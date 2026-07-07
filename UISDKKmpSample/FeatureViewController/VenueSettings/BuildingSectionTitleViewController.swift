@@ -2,7 +2,7 @@
 //  BuildingSectionTitleViewController.swift
 //  UISDKKmpSample
 //
-//  buildingSectionTitle 功能详情页
+//  buildingSectionTitle feature detail page
 //  Name: buildingSectionTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

@@ -2,7 +2,7 @@
 //  FeatureListViewController.swift
 //  UISDKKmpSample
 //
-//  点击某个分类后进入，展示该分类下的功能列表
+//  Opened after selecting a category; displays the feature list for that category
 //
 
 import UIKit
@@ -10,10 +10,10 @@ import SnapKit
 
 final class FeatureListViewController: UIViewController {
 
-    /// 当前选中的分类标题（用于从 featureList 取功能项）
+    /// Currently selected category title, used to fetch feature items from featureList
     private let categoryTitle: String
 
-    /// 功能列表（来自 FeatureConstants.featureList）
+    /// Feature list from FeatureConstants.featureList
     private lazy var features: [String] = {
         FeatureConstants.featureList[categoryTitle] ?? []
     }()

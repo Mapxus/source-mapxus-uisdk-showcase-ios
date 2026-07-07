@@ -2,7 +2,7 @@
 //  MaterialResourcePathViewController.swift
 //  UISDKKmpSample
 //
-//  materialResourcePath 功能详情页
+//  materialResourcePath feature detail page
 //
 
 import UIKit

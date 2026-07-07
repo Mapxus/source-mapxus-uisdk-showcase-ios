@@ -52,7 +52,7 @@ final class Config {
       print("configSet:",configSet)
     }
 
-    /// 根据 key 获取 diConfigDefault 中对应属性的值
+    /// Gets the corresponding property value from diConfigDefault by key
     func defaultValue(forKey key: String) -> Any? {
         (diConfigDefault as NSObject).value(forKey: key)
     }

@@ -2,7 +2,7 @@
 //  SendLogButtonTitleViewController.swift
 //  UISDKKmpSample
 //
-//  sendLogButtonTitle 功能详情页
+//  sendLogButtonTitle feature detail page
 //  Name: sendLogButtonTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

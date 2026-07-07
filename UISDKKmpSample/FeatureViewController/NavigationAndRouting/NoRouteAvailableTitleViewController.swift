@@ -2,7 +2,7 @@
 //  NoRouteAvailableTitleViewController.swift
 //  UISDKKmpSample
 //
-//  noRouteAvailableTitle 功能详情页
+//  noRouteAvailableTitle feature detail page
 //  Name: noRouteAvailableTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

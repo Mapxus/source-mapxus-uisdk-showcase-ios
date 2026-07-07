@@ -2,7 +2,7 @@
 //  BuildingDetailRouteViewController.swift
 //  UISDKKmpSample
 //
-//  BuildingDetailRoute 功能详情页
+//  BuildingDetailRoute feature detail page
 //  Name: BuildingDetailRoute
 //  Type: AppRoute
 //

@@ -7,7 +7,7 @@ import UIKit
 import SnapKit
 import DropInUISDK
 
-/// 第一行标题 + 第二行用 view 包一层，左边约 2 个 Tab 偏移
+/// First-line title plus a second line wrapped in a view, offset by about two tabs on the left
 private final class ConfigSetCell: UITableViewCell {
     static let id = "ConfigSetCell"
     private let titleLabel = UILabel()
@@ -60,7 +60,7 @@ final class MainViewController: UIViewController {
 
     private var pendingPushIndex: Int?
 
-    /// 从 Config.configSet 读取并字母排序后的列表，每次从路由返回时刷新
+    /// List read from Config.configSet and sorted alphabetically; refreshed whenever returning from a route
     private var configSetItems: [String] = []
 
     private let diConfigTitleLabel: UILabel = {
@@ -254,7 +254,7 @@ final class MainViewController: UIViewController {
         navigationController?.pushViewController(FeatureListViewController(categoryTitle: "🧭 Route Paths"), animated: true)
     }
     
-    /// 读取 Config.configSet，按字母排序后更新 configSetItems 并刷新 tableView 与提示文案
+    /// Reads Config.configSet, sorts alphabetically, updates configSetItems, and refreshes the tableView and prompt text
     private func refreshConfigSetItems() {
         configSetItems = Config.shared.configSet.sorted(by: { $0.compare($1, options: .caseInsensitive) == .orderedAscending })
         tableView.reloadData()
@@ -271,7 +271,7 @@ final class MainViewController: UIViewController {
             : "Other configurations use DIConfig defaults."
     }
 
-    /// 将对象按 keys 用 KVC 取出，格式化为 "key:value, key:value"；skipEmptyStrings 为 true 时跳过空字符串
+    /// Reads object values by keys using KVC and formats them as "key:value, key:value"; skips empty strings when skipEmptyStrings is true
     private func formatKeyValues(_ obj: NSObject, keys: [String], skipEmptyStrings: Bool = false) -> String {
         var parts: [String] = []
         for k in keys {
@@ -290,7 +290,7 @@ final class MainViewController: UIViewController {
         return parts.joined(separator: ", ")
     }
 
-    /// 基础类型、枚举、类类型显示值；[SharedFloorsUnifiedName]? / [VenueAnchorPoiConfig]? 暂 "TODO"
+    /// Display values for primitive, enum, and class types; [SharedFloorsUnifiedName]? / [VenueAnchorPoiConfig]? are currently "TODO"
     private func detailText(forKey key: String) -> String {
         let value = Config.shared.configValue(forKey: key)
         let dataType = FeatureInfoTable.load()?.item(forKey: key)?.dataType ?? ""
@@ -430,7 +430,7 @@ final class MainViewController: UIViewController {
             }
             return parts.joined(separator: "\n")
         case "[SharedFloorsUnifiedName]?":
-            // 支持 [SharedFloorsUnifiedName] 或 NSArray<SharedFloorsUnifiedName>
+            // Supports [SharedFloorsUnifiedName] or NSArray<SharedFloorsUnifiedName>
             let objects: [NSObject]
             if let arr = value as? [NSObject] {
                 objects = arr
@@ -463,7 +463,7 @@ final class MainViewController: UIViewController {
             }
             return blocks.joined(separator: "\n\n")
         case "[VenueAnchorPoiConfig]?":
-            // 支持 [VenueAnchorPoiConfig] 或 NSArray<VenueAnchorPoiConfig>
+            // Supports [VenueAnchorPoiConfig] or NSArray<VenueAnchorPoiConfig>
             let objects: [NSObject]
             if let arr = value as? [NSObject] {
                 objects = arr
@@ -608,7 +608,7 @@ final class MainViewController: UIViewController {
     private func updateUI() {}
 
     @objc private func showMenu() {
-        // 从 nav 上 present，遮罩才能盖住导航栏（Main 的 view 在 nav 下方）
+        // Present from the navigation controller so the overlay can cover the navigation bar; Main view sits below the nav bar
         let presenting = navigationController ?? self
         CategoryListViewController.present(
             on: presenting,
@@ -652,12 +652,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         guard index >= 0, index < configSetItems.count else { return }
         let key = configSetItems[index]
 
-        // 恢复为默认值：写回 diConfig，并通过 saveChange 更新 configSet
+        // Restores the default value by writing back to diConfig and updating configSet through saveChange
         let defaultValue = Config.shared.defaultValue(forKey: key)
         (Config.shared.diConfig as NSObject).setValue(defaultValue, forKey: key)
         Config.shared.saveChange([key: defaultValue])
 
-        // 刷新列表
+        // Refreshes the list
         refreshConfigSetItems()
     }
 }

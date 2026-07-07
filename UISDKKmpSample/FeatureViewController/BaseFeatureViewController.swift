@@ -2,7 +2,7 @@
 //  BaseFeatureViewController.swift
 //  UISDKKmpSample
 //
-//  三级页面基类（功能详情页）
+//  Base class for third-level feature detail pages
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import SnapKit
 
 class BaseFeatureViewController: UIViewController {
 
-    /// 当前功能名称（如 "initialBounds"）
+    /// Current feature name, such as "initialBounds"
     let featureName: String
 
     required init(featureName: String) {
@@ -35,12 +35,12 @@ class BaseFeatureViewController: UIViewController {
         )
     }
 
-    /// Save 按钮点击：基类默认行为为 pop 回上一页。子类可重写此方法，在完成校验与保存后调用 super.saveBarButtonTapped() 执行返回。
+    /// Save button tap handler: the base implementation pops to the previous page. Subclasses can override this method and call super.saveBarButtonTapped() after validation and saving.
     @objc func saveBarButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
     }
 
-    /// 描述区域卡片样式（圆角、背景、内边距）
+    /// Description card style, including corner radius, background, and padding
     private func makeCardContainer() -> UIView {
         let container = UIView()
         container.backgroundColor = .secondarySystemGroupedBackground
@@ -49,7 +49,7 @@ class BaseFeatureViewController: UIViewController {
         return container
     }
 
-    /// 区块标题样式
+    /// Section title style
     private func makeSectionTitle(_ text: String) -> UIView {
         let container = UIView()
         let label = UILabel()
@@ -63,7 +63,7 @@ class BaseFeatureViewController: UIViewController {
         return container
     }
 
-    /// 分割线：用于分隔描述区块与参数区块
+    /// Divider used to separate the description section from the parameter section
     private func makeSectionDivider() -> UIView {
         let container = UIView()
         let line = UIView()
@@ -81,12 +81,12 @@ class BaseFeatureViewController: UIViewController {
         return container
     }
 
-    /// 根据 featureName 从 FeatureInfo.json 读取并构建描述区域 UI，以卡片形式加入 content
+    /// Reads FeatureInfo.json by featureName, builds the description UI, and adds it to content as a card
     func addDescriptionContent(to content: UIStackView) {
         guard let table = FeatureInfoTable.load(),
               let item = table.item(forKey: featureName) else { return }
 
-        // 描述区块标题
+        // Description section title
         let descSectionTitle = makeSectionTitle("Description")
         content.addArrangedSubview(descSectionTitle)
 
@@ -123,9 +123,9 @@ class BaseFeatureViewController: UIViewController {
         content.addArrangedSubview(card)
     }
 
-    /// 将参数设置 views 包装为卡片区块，加入 content（自动在区块前添加分割线）
+    /// Wraps parameter setting views in a card section and adds them to content, automatically adding a divider before the section
     func addParameterSection(to content: UIStackView, views: UIView...) {
-        // 分割线 + 参数区块标题
+        // Divider plus parameter section title
         content.addArrangedSubview(makeSectionDivider())
         let paramSectionTitle = makeSectionTitle("Parameters")
         content.addArrangedSubview(paramSectionTitle)
@@ -149,7 +149,7 @@ class BaseFeatureViewController: UIViewController {
         content.addArrangedSubview(card)
     }
 
-    /// 为 Route 类型 VC 构建描述区域，字段：Route Class、Parameters、Return Type、Description
+    /// Builds the description area for route VCs with Route Class, Parameters, Return Type, and Description fields
     func addFunctionDescriptionContent(to content: UIStackView) {
         guard let table = FeatureInfoTable.load(),
               let item = table.item(forKey: featureName) else { return }
@@ -217,7 +217,7 @@ class BaseFeatureViewController: UIViewController {
         return container
     }
 
-    /// Listener 描述区域：从 FeatureInfo.json 读取 listenerName、methods、description 并展示
+    /// Listener description area: reads listenerName, methods, and description from FeatureInfo.json and displays them
     func addListenerDescriptionContent(to content: UIStackView) {
         guard let table = FeatureInfoTable.load(),
               let item = table.item(forKey: featureName),
@@ -272,7 +272,7 @@ class BaseFeatureViewController: UIViewController {
         content.addArrangedSubview(card)
     }
 
-    /// Switch 行：左边标题，右边 UISwitch
+    /// Switch row with the title on the left and UISwitch on the right
     func switchRow(title: String, control: UISwitch) -> UIView {
         let container = UIView()
         let label = UILabel()
@@ -297,7 +297,7 @@ class BaseFeatureViewController: UIViewController {
     private var logHeightConstraint: Constraint?
     private var logContainer: UIStackView?
 
-    /// 在 content 底部添加 Log 输出区域（初始隐藏，首次 appendLog 时显示；最高 3/4 屏幕，超出滚动）
+    /// Adds the log output area at the bottom of content. It is hidden initially, shown on the first appendLog call, capped at 3/4 of the screen height, and scrolls when overflowing
     func addLogSection(to content: UIStackView) {
         let container = UIStackView()
         container.axis = .vertical
@@ -329,7 +329,7 @@ class BaseFeatureViewController: UIViewController {
         content.addArrangedSubview(container)
     }
 
-    /// 追加一条 log，格式为 "[HH:mm:ss] message"，首次调用时自动显示 log 区域
+    /// Appends one log entry in "[HH:mm:ss] message" format and automatically shows the log area on the first call
     func appendLog(_ message: String) {
         guard let tv = logTextView else { return }
         if logContainer?.isHidden == true {

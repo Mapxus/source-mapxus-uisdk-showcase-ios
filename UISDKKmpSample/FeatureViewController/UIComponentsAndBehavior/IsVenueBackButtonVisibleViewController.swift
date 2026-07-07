@@ -2,7 +2,7 @@
 //  IsVenueBackButtonVisibleViewController.swift
 //  UISDKKmpSample
 //
-//  isVenueBackButtonVisible 功能详情页
+//  isVenueBackButtonVisible feature detail page
 //  Name: isVenueBackButtonVisible
 //  Type: Boolean
 //  Default: false

@@ -2,7 +2,7 @@
 //  ShareDisplayModeViewController.swift
 //  UISDKKmpSample
 //
-//  shareDisplayMode 功能详情页
+//  shareDisplayMode feature detail page
 //  Name: shareDisplayMode
 //  Type: ShareDisplayMode
 //  Default: ShareDisplayMode.BOTH

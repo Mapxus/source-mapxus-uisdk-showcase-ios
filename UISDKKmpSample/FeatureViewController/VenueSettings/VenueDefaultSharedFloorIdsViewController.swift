@@ -2,7 +2,7 @@
 //  VenueDefaultSharedFloorIdsViewController.swift
 //  UISDKKmpSample
 //
-//  venueDefaultSharedFloorIds 功能详情页
+//  venueDefaultSharedFloorIds feature detail page
 //  Name: venueDefaultSharedFloorIds
 //  Type: [String]?
 //  Default: nil

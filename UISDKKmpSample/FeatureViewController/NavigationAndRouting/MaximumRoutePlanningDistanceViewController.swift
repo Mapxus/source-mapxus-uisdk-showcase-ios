@@ -2,7 +2,7 @@
 //  MaximumRoutePlanningDistanceViewController.swift
 //  UISDKKmpSample
 //
-//  maximumRoutePlanningDistance 功能详情页
+//  maximumRoutePlanningDistance feature detail page
 //  Name: maximumRoutePlanningDistance
 //  Type: Double?
 //  Default: nil
@@ -143,7 +143,7 @@ final class MaximumRoutePlanningDistanceViewController: BaseFeatureViewControlle
         value == value.rounded() ? String(Int(value)) : String(value)
     }
 
-    // 限制输入为数字、小数点和负号，且只允许一个小数点
+    // Restricts input to digits, a decimal point, and a minus sign, and allows only one decimal point
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let current = textField.text ?? ""
         let proposed = (current as NSString).replacingCharacters(in: range, with: string)

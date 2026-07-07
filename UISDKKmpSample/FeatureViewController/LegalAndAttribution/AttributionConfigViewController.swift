@@ -2,7 +2,7 @@
 //  AttributionConfigViewController.swift
 //  UISDKKmpSample
 //
-//  attributionConfig 功能详情页
+//  attributionConfig feature detail page
 //  Name: attributionConfig
 //  Type: AttributionConfig?
 //  Default: nil

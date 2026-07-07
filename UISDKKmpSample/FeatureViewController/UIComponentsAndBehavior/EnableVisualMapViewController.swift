@@ -2,7 +2,7 @@
 //  EnableVisualMapViewController.swift
 //  UISDKKmpSample
 //
-//  enableVisualMap 功能详情页
+//  enableVisualMap feature detail page
 //  Name: enableVisualMap
 //  Type: Boolean
 //  Default: false

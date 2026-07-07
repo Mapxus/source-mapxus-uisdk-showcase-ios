@@ -2,7 +2,7 @@
 //  SharedFloorsUnifiedNamesViewController.swift
 //  UISDKKmpSample
 //
-//  sharedFloorsUnifiedNames 功能详情页（方案 A：卡片列表，保存逻辑待实现）
+//  sharedFloorsUnifiedNames feature detail page（Approach A: card list; save logic is pending）
 //  Name: sharedFloorsUnifiedNames
 //  Type: [SharedFloorsUnifiedName]?
 //  Default: nil
@@ -35,7 +35,7 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
         }
     }
 
-    /// 单条条目的视图与输入引用
+    /// View and input references for one entry
     struct EntryCard {
         let containerView: UIView
         let venueIdField: UITextField
@@ -82,11 +82,11 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
         listContainer.isHidden = true
         addParameterSection(to: content, views: selectorRow, spacer, listContainer)
 
-        // 从 diConfig 读取当前值并填充 UI
+        // Reads the current value from diConfig and populates the UI
         let current = Config.shared.configValue(forKey: featureName) as? [SharedFloorsUnifiedName]
             ?? (Config.shared.configValue(forKey: featureName) as? NSArray)?
             .compactMap { $0 as? SharedFloorsUnifiedName }
-        // 注意：长度为 0 的数组依然视为「列表」而不是 nil
+        // Note: an array with length 0 is still treated as a list, not nil
         if let configs = current {
             segmentControl.selectedSegmentIndex = 1
             listContainer.isHidden = false
@@ -131,16 +131,16 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
         super.saveBarButtonTapped()
     }
 
-    /// 校验并构建 SharedFloorsUnifiedName 数组。
-    /// - 当 segment 为 nil 时返回 (nil, nil)
-    /// - 当 segment 为列表且未添加任何 entry 时返回 (nil, [])
-    /// - 当存在 entry 且任意一条 venueId 为空或所有 unifiedName 为空时返回错误
+    /// Validates and builds the SharedFloorsUnifiedName array.
+    /// - Returns (nil, nil) when the segment is nil
+    /// - Returns (nil, []) when the segment is list and no entries have been added
+    /// - Returns an error when any entry has an empty venueId or all unifiedName values are empty
     private func validateAndBuild() -> (error: Error?, items: [SharedFloorsUnifiedName]?) {
         guard segmentControl.selectedSegmentIndex != 0 else {
             return (nil, nil)
         }
 
-        // 未添加任何 entry，视为空数组
+        // When no entries are added, treat it as an empty array
         guard !entryCards.isEmpty else {
             return (nil, [])
         }
@@ -153,7 +153,7 @@ final class SharedFloorsUnifiedNamesViewController: BaseFeatureViewController {
 
             let hasUnifiedName = nameValues.contains { !$0.isEmpty }
 
-            // 每个 entry 必须有 venueId 且至少一个 unifiedName 非空
+            // Each entry must have a venueId and at least one non-empty unifiedName
             guard !venueId.isEmpty, hasUnifiedName else {
                 return (EntriesValidationError.invalidEntry, nil)
             }

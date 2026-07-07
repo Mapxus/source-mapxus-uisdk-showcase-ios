@@ -2,7 +2,7 @@
 //  SearchPoiByBoundsViewController.swift
 //  UISDKKmpSample
 //
-//  searchPoiByBounds 功能详情页
+//  searchPoiByBounds feature detail page
 //
 
 import UIKit

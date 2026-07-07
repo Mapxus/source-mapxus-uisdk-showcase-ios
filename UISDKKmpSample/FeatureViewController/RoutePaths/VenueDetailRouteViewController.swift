@@ -2,7 +2,7 @@
 //  VenueDetailRouteViewController.swift
 //  UISDKKmpSample
 //
-//  VenueDetailRoute 功能详情页
+//  VenueDetailRoute feature detail page
 //  Name: VenueDetailRoute
 //  Type: AppRoute
 //

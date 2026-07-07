@@ -2,7 +2,7 @@
 //  NoRouteAvailableMessageViewController.swift
 //  UISDKKmpSample
 //
-//  noRouteAvailableMessage 功能详情页
+//  noRouteAvailableMessage feature detail page
 //  Name: noRouteAvailableMessage
 //  Type: StringsWithLanguage?
 //  Default: nil

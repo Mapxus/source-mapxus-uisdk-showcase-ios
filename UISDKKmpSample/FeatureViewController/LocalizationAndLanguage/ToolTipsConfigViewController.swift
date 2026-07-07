@@ -2,7 +2,7 @@
 //  ToolTipsConfigViewController.swift
 //  UISDKKmpSample
 //
-//  toolTipsConfig 功能详情页
+//  toolTipsConfig feature detail page
 //  Name: toolTipsConfig
 //  Type: ToolTipsConfig?
 //  Default: nil
@@ -203,10 +203,10 @@ final class ToolTipsConfigViewController: BaseFeatureViewController {
         let isCustom = segmentControl.selectedSegmentIndex == 1
         formContainer?.isHidden = !isCustom
         if !isCustom {
-            // 折叠时不强制清空子段，用户再次打开可继续编辑
+            // Do not force-clear child segments when collapsed, so users can continue editing after reopening
             return
         }
-        // 保证三个子段默认处于 nil 状态
+        // Ensures the three child segments default to nil
         if titleSegment.selectedSegmentIndex == UISegmentedControl.noSegment {
             titleSegment.selectedSegmentIndex = 0
             titleFieldsContainer?.isHidden = true
@@ -292,7 +292,7 @@ final class ToolTipsConfigViewController: BaseFeatureViewController {
         }
         container.addArrangedSubview(enabledRow)
 
-        // Title, Content, HTML Content sections（每个内部再用 nil / StringsWithLanguage 分段控制）
+        // Title, Content, and HTML Content sections, each internally controlled by nil / StringsWithLanguage segments
         container.addArrangedSubview(stringsSection(title: "title", segment: titleSegment, fieldsStore: &titleFields))
         container.addArrangedSubview(stringsSection(title: "content", segment: contentSegment, fieldsStore: &contentFields))
         container.addArrangedSubview(stringsSection(title: "htmlContent", segment: htmlSegment, fieldsStore: &htmlContentFields))

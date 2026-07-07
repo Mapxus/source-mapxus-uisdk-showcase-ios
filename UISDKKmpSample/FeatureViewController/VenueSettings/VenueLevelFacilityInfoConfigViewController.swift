@@ -2,7 +2,7 @@
 //  VenueLevelFacilityInfoConfigViewController.swift
 //  UISDKKmpSample
 //
-//  venueLevelFacilityInfoConfig 功能详情页
+//  venueLevelFacilityInfoConfig feature detail page
 //  Name: venueLevelFacilityInfoConfig
 //  Type: [VenueLevelFacilityInfoConfig]?
 //  Default: nil

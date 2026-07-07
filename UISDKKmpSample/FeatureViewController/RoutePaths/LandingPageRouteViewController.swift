@@ -2,7 +2,7 @@
 //  LandingPageRouteViewController.swift
 //  UISDKKmpSample
 //
-//  LandingPageRoute 功能详情页
+//  LandingPageRoute feature detail page
 //  Name: LandingPageRoute
 //  Type: AppRoute
 //

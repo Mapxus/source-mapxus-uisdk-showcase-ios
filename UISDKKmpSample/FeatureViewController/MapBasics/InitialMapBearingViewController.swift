@@ -2,7 +2,7 @@
 //  InitialMapBearingViewController.swift
 //  UISDKKmpSample
 //
-//  initialMapBearing 功能详情页
+//  initialMapBearing feature detail page
 //  Name: initialMapBearing
 //  Type: Double
 //  Default: 0.0

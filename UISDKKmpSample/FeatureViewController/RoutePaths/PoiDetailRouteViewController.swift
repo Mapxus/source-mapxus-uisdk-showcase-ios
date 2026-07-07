@@ -2,7 +2,7 @@
 //  PoiDetailRouteViewController.swift
 //  UISDKKmpSample
 //
-//  PoiDetailRoute 功能详情页
+//  PoiDetailRoute feature detail page
 //  Name: PoiDetailRoute
 //  Type: AppRoute
 //

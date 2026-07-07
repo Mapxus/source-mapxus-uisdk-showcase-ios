@@ -2,7 +2,7 @@
 //  IsBuildingListVisibleViewController.swift
 //  UISDKKmpSample
 //
-//  isBuildingListVisible 功能详情页
+//  isBuildingListVisible feature detail page
 //  Name: isBuildingListVisible
 //  Type: Boolean
 //  Default: true

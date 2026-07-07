@@ -2,7 +2,7 @@
 //  SettingsLanguageOptionsViewController.swift
 //  UISDKKmpSample
 //
-//  settingsLanguageOptions 功能详情页
+//  settingsLanguageOptions feature detail page
 //  Name: settingsLanguageOptions
 //  Type: [Language]?
 //  Default: nil
@@ -90,7 +90,7 @@ final class SettingsLanguageOptionsViewController: BaseFeatureViewController {
         }
 
         if let current = current {
-            // Custom（即使为空数组也视为 Custom）
+            // Custom, even an empty array is treated as Custom
             segmentControl.selectedSegmentIndex = 1
             tableContainer?.isHidden = false
             tableContainer?.isUserInteractionEnabled = true
@@ -99,7 +99,7 @@ final class SettingsLanguageOptionsViewController: BaseFeatureViewController {
             selectedLanguages = current.filter { $0.name != "TraditionalChineseHK" }
             availableLanguages = allLanguages.filter { !selectedLanguages.contains($0) }
         } else {
-            // nil：不显示 TableView
+            // nil: do not show the TableView
             segmentControl.selectedSegmentIndex = 0
             tableContainer?.isHidden = true
 
@@ -129,7 +129,7 @@ final class SettingsLanguageOptionsViewController: BaseFeatureViewController {
         let isCustom = segmentControl.selectedSegmentIndex == 1
         tableContainer?.isHidden = !isCustom
         if isCustom {
-            // 从 nil 切到 Custom 时，默认从空列表开始
+            // When switching from nil to Custom, start with an empty list by default
             if selectedLanguages.isEmpty {
                 availableLanguages = allLanguages
             }
@@ -181,7 +181,7 @@ final class SettingsLanguageOptionsViewController: BaseFeatureViewController {
 
     private static let tableRowHeight: CGFloat = 44
     private static let tableSectionHeaderHeight: CGFloat = 28
-    /// 每个 section 上方的固定间隔（UITableView plain 样式）
+    /// Fixed spacing above each section for the UITableView plain style
     private static let tableSectionTopGap: CGFloat = 22
 
     private func reloadTable() {

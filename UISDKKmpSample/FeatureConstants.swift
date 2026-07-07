@@ -2,7 +2,7 @@
 //  FeatureConstants.swift
 //  UISDKKmpSample
 //
-//  分类与功能常量
+//  Category and feature constants
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import UIKit
 
 enum FeatureConstants {
 
-    /// 分类列表（侧边栏 Table Cell 标题）
+    /// Category list (sidebar table cell titles)
     static let categoryList: [String] = [
         "🌍 Map Basics",
         "🎨 UI Appearance & Theming",
@@ -26,7 +26,7 @@ enum FeatureConstants {
         "📡 Listener",
     ]
 
-    /// 功能列表（分类标题 -> 功能名称数组）
+    /// Feature list (category title -> feature name array)
     static let featureList: [String: [String]] = [
         "🌍 Map Basics": ["initialBounds", "mapBoundsRestriction", "initialMapBearing", "mapStyle", "mapStyleDark", "initialMapPitch", "selectedBuildingBorderStyle", "floorSwitchScope"],
         "🎨 UI Appearance & Theming": ["appearanceMode", "colors", "shapes", "materialResourcePath"],
@@ -42,7 +42,7 @@ enum FeatureConstants {
         "📡 Listener": ["setToolTipsListener", "setLandingPageEventListener", "setVenueEventListener", "setBuildingEventListener", "setPoiEventListener", "setCategorySearchEventListener", "setEventListener", "setKeywordSearchEventListener", "setMapEventListener", "setNavigationEventListener", "setRoutePlanningEventListener", "setShareEventListener", "setMenuEventListener", "setDataTrackingListener"],
     ]
 
-    /// 根据功能名称获取所属分类标题。例如 `category(forFeature: "isBuildingListVisible")` 返回 `"🏢 Venue Settings"`。
+    /// Returns the category title for a feature name. For example, `category(forFeature: "isBuildingListVisible")` returns `"🏢 Venue Settings"`.
     static func category(forFeature feature: String) -> String? {
         for (categoryTitle, features) in featureList {
             if features.contains(feature) {
@@ -52,7 +52,7 @@ enum FeatureConstants {
         return nil
     }
 
-    /// 功能名称 -> 详情页 ViewController 类型映射（新增功能页时在此登记即可）
+    /// Feature name -> detail ViewController type mapping. Register new feature pages here.
     private static let featureViewControllerTypes: [String: BaseFeatureViewController.Type] = [
         "initialBounds": InitialBoundsViewController.self,
         "mapBoundsRestriction": MapBoundsRestrictionViewController.self,
@@ -133,7 +133,7 @@ enum FeatureConstants {
         "setDataTrackingListener": DataTrackingListenerViewController.self,
     ]
 
-    /// 根据功能名称创建对应的详情页；无映射时返回 nil。
+    /// Creates the detail page for a feature name; returns nil when no mapping exists.
     static func viewController(forFeature featureName: String) -> BaseFeatureViewController? {
         featureViewControllerTypes[featureName]?.init(featureName: featureName)
     }

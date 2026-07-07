@@ -2,7 +2,7 @@
 //  CategoryListViewController.swift
 //  UISDKKmpSample
 //
-//  左侧分类列表（overCurrentContext 弹出，左侧 table 滑入 + 遮罩）
+//  Left category list presented with overCurrentContext; the left table slides in with a dimming overlay
 //
 
 import UIKit
@@ -25,7 +25,7 @@ final class CategoryListViewController: UIViewController {
         vc.delegate = delegate
         vc.titles = titles
         vc.defaultSelected = index
-        // overFullScreen：遮罩盖住整屏，含状态栏/刘海等 safe area 外区域
+        // overFullScreen: the overlay covers the full screen, including the status bar, notch, and areas outside the safe area
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
 

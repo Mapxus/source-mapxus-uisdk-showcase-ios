@@ -2,7 +2,7 @@
 //  NavigationRoadSnapStrengthViewController.swift
 //  UISDKKmpSample
 //
-//  navigationRoadSnapStrength 功能详情页
+//  navigationRoadSnapStrength feature detail page
 //  Name: navigationRoadSnapStrength
 //  Type: Double?
 //  Default: nil

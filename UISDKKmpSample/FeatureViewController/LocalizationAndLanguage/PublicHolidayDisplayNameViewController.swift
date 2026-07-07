@@ -2,10 +2,10 @@
 //  PublicHolidayDisplayNameViewController.swift
 //  UISDKKmpSample
 //
-//  publicHolidayDisplayName 功能详情页
+//  publicHolidayDisplayName feature detail page
 //  Name: publicHolidayDisplayName
 //  Type: StringsWithLanguage
-//  Default: defaultPhDisplayName (e.g. en: "Public Holiday", zhHans: "公众假期", zhHant: "公眾假期", ja: "祝日", ko: "Public Holiday")
+//  Default: defaultPhDisplayName with localized public holiday labels
 //  Description: Display name for public holidays in the UI. Supports multiple languages via StringsWithLanguage.
 //
 

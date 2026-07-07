@@ -2,7 +2,7 @@
 //  CategoryListConfigViewController.swift
 //  UISDKKmpSample
 //
-//  categoryListConfig 功能详情页
+//  categoryListConfig feature detail page
 //  Name: categoryListConfig
 //  Type: [String]?
 //  Default: nil

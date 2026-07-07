@@ -2,7 +2,7 @@
 //  LanguageViewController.swift
 //  UISDKKmpSample
 //
-//  language 功能详情页
+//  language feature detail page
 //  Name: language
 //  Type: Language
 //  Default: SystemLanguage
@@ -19,7 +19,7 @@ final class LanguageViewController: BaseFeatureViewController {
     private var tableContainer: UIView?
     private var tableHeightConstraint: Constraint?
 
-    /// 可用选项（排除已弃用的 TraditionalChineseHK）
+    /// Available options, excluding the deprecated TraditionalChineseHK
     private var allCases: [Language] {
         Language.allCases.filter { $0.name != "TraditionalChineseHK" }
     }

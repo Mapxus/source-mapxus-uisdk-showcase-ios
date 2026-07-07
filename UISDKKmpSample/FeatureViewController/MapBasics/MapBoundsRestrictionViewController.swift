@@ -2,7 +2,7 @@
 //  MapBoundsRestrictionViewController.swift
 //  UISDKKmpSample
 //
-//  mapBoundsRestriction 功能详情页
+//  mapBoundsRestriction feature detail page
 //
 
 import UIKit

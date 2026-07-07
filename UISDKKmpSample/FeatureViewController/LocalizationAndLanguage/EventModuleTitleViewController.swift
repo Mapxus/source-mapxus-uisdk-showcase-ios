@@ -2,7 +2,7 @@
 //  EventModuleTitleViewController.swift
 //  UISDKKmpSample
 //
-//  eventModuleTitle 功能详情页
+//  eventModuleTitle feature detail page
 //  Name: eventModuleTitle
 //  Type: StringsWithLanguage?
 //  Default: nil

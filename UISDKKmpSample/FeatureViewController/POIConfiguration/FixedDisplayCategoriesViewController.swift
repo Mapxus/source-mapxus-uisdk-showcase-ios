@@ -2,7 +2,7 @@
 //  FixedDisplayCategoriesViewController.swift
 //  UISDKKmpSample
 //
-//  fixedDisplayCategories 功能详情页
+//  fixedDisplayCategories feature detail page
 //  Name: fixedDisplayCategories
 //  Type: [String]?
 //  Default: nil

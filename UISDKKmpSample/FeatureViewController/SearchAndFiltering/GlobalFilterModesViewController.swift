@@ -2,7 +2,7 @@
 //  GlobalFilterModesViewController.swift
 //  UISDKKmpSample
 //
-//  globalFilterModes 功能详情页
+//  globalFilterModes feature detail page
 //  Name: globalFilterModes
 //  Type: [GlobalFilterMode]?
 //  Default: nil
