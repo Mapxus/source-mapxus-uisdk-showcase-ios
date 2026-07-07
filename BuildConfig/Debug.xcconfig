@@ -1,3 +1,6 @@
 #include "../Pods/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.debug.xcconfig"
 #include "Secrets.example.xcconfig"
 #include? "Secrets.local.xcconfig"
+
+// Inject credentials as compile-time macros consumed by ConstString.m.
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) MAPXUS_API_KEY='$(MAPXUS_API_KEY)' MAPXUS_SECRET='$(MAPXUS_SECRET)'

@@ -12,11 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
-  private enum Secrets {
-    static let apiKeyInfoKey = "MapxusApiKey"
-    static let secretInfoKey = "MapxusSecret"
-  }
-
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -73,9 +68,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 private extension SceneDelegate {
   func mapxusCredentials() -> (apiKey: String, secret: String) {
-    let infoDictionary = Bundle.main.infoDictionary ?? [:]
-    let apiKey = (infoDictionary[Secrets.apiKeyInfoKey] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-    let secret = (infoDictionary[Secrets.secretInfoKey] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    let apiKey = ConstString.getMapxusKey().trimmingCharacters(in: .whitespacesAndNewlines)
+    let secret = ConstString.getMapxusSecret().trimmingCharacters(in: .whitespacesAndNewlines)
 
     guard !apiKey.isEmpty, !secret.isEmpty, apiKey != "YOUR_API_KEY", secret != "YOUR_SECRET" else {
       let message = "Missing Mapxus credentials. Copy BuildConfig/Secrets.example.xcconfig to BuildConfig/Secrets.local.xcconfig and set MAPXUS_API_KEY and MAPXUS_SECRET."

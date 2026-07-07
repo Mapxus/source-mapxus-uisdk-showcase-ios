@@ -181,9 +181,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -237,8 +241,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISDKKmpSample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UISDKShowcase;
-				INFOPLIST_KEY_MapxusApiKey = "$(MAPXUS_API_KEY)";
-				INFOPLIST_KEY_MapxusSecret = "$(MAPXUS_SECRET)";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to provide you with personalized content.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
@@ -259,6 +261,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "UISDKKmpSample/UISDKKmpSample-Bridging-Header.h";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -277,8 +280,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISDKKmpSample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UISDKShowcase;
-				INFOPLIST_KEY_MapxusApiKey = "$(MAPXUS_API_KEY)";
-				INFOPLIST_KEY_MapxusSecret = "$(MAPXUS_SECRET)";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to provide you with personalized content.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
@@ -299,6 +300,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "UISDKKmpSample/UISDKKmpSample-Bridging-Header.h";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
