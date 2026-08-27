@@ -10,7 +10,7 @@ PODS:
     - AFNetworking/PrivacyResources
   - AFNetworking/Serialization (4.0.5):
     - AFNetworking/PrivacyResources
-  - DropInUISDK (7.15.0):
+  - DropInUISDK (7.16.0):
     - MapxusBaseSDK (= 8.6.0)
   - IQKeyboardCore (1.0.9)
   - IQKeyboardManagerSwift (8.0.3):
@@ -93,7 +93,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 835ebc2040310ad1794392552ae096271f31c8ff
-  DropInUISDK: 50128e824e5ae480d23729de2a51b76c89aed7ed
+  DropInUISDK: ea5cdea70ac520c39d4d9e1a86e3a506a8eb52f0
   IQKeyboardCore: 250a88dfc713b2ecbe1dce250811d054fc016959
   IQKeyboardManagerSwift: 7f6a9a1e2285732d3ff5f485ff921215253ea77e
   IQKeyboardNotification: 3b9bc812a5af2cf97df08a363d9daa9fc0dc1848

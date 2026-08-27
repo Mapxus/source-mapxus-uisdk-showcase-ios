@@ -1,0 +1,15 @@
+// Build configuration used by every scheme. Tracked by Git, so keep the
+// placeholder values below and do not commit real credentials here.
+//
+// To build the app either fill in your own values in this file, or copy it to
+// BuildConfig/Config.<name>.xcconfig, edit the copy, and point the build
+// configuration at it in Xcode > Project > Info > Configurations.
+// Copies matching BuildConfig/Config.*.xcconfig are ignored by Git.
+
+PRODUCT_BUNDLE_IDENTIFIER = com.mapxus.uisdk-showcase.ios
+INFOPLIST_KEY_CFBundleDisplayName = UISDKShowcase
+MAPXUS_API_KEY = YOUR_API_KEY
+MAPXUS_SECRET = YOUR_SECRET
+
+// Injected as compile-time macros consumed by ConstString.m.
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) MAPXUS_API_KEY='$(MAPXUS_API_KEY)' MAPXUS_SECRET='$(MAPXUS_SECRET)'

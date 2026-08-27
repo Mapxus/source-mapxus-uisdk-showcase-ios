@@ -72,7 +72,9 @@ Document/
 .bundle
 vendor/
 
-BuildConfig/Secrets.local.xcconfig
+# Flavor build configs hold credentials; only the template is tracked.
+BuildConfig/Config.*.xcconfig
+!BuildConfig/Config.example.xcconfig
 .env
 *.env
 *.p8

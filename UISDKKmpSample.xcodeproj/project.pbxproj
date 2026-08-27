@@ -13,13 +13,10 @@
 /* Begin PBXFileReference section */
 		34F2C8952FA34C4F008A8E5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		34F387CF2F29C21800214216 /* UISDKKmpSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISDKKmpSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E034A442FD22FA5002995A1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = BuildConfig/Debug.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A452FD22FA5002995A1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = BuildConfig/Release.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A462FD22FA5002995A1 /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.example.xcconfig; path = BuildConfig/Secrets.example.xcconfig; sourceTree = SOURCE_ROOT; };
-		3E034A472FD2309F002995A1 /* Secrets.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.local.xcconfig; path = BuildConfig/Secrets.local.xcconfig; sourceTree = SOURCE_ROOT; };
-		594780334DAAAB312ACC4BA9 /* Pods-UISDKKmpSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.release.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.release.xcconfig"; sourceTree = "<group>"; };
+		3E034A442FD22FA5002995A1 /* Config.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.example.xcconfig; path = BuildConfig/Config.example.xcconfig; sourceTree = SOURCE_ROOT; };
 		66D8D71DA023F27649292B2E /* Pods_UISDKKmpSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UISDKKmpSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7B4E43C09275B89656EA37D /* Pods-UISDKKmpSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.debug.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.debug.xcconfig"; sourceTree = "<group>"; };
+		720D209A4E0DC8FCD0563685 /* Pods-UISDKKmpSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.debug.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.debug.xcconfig"; sourceTree = "<group>"; };
+		FE54C8CFE3473B0944DD0035 /* Pods-UISDKKmpSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UISDKKmpSample.release.xcconfig"; path = "Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -78,10 +75,7 @@
 		3E034A432FD22E97002995A1 /* BuildConfig */ = {
 			isa = PBXGroup;
 			children = (
-				3E034A442FD22FA5002995A1 /* Debug.xcconfig */,
-				3E034A452FD22FA5002995A1 /* Release.xcconfig */,
-				3E034A462FD22FA5002995A1 /* Secrets.example.xcconfig */,
-				3E034A472FD2309F002995A1 /* Secrets.local.xcconfig */,
+				3E034A442FD22FA5002995A1 /* Config.example.xcconfig */,
 			);
 			path = BuildConfig;
 			sourceTree = SOURCE_ROOT;
@@ -89,8 +83,8 @@
 		CFC86339C2EF5EE768926072 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E7B4E43C09275B89656EA37D /* Pods-UISDKKmpSample.debug.xcconfig */,
-				594780334DAAAB312ACC4BA9 /* Pods-UISDKKmpSample.release.xcconfig */,
+				720D209A4E0DC8FCD0563685 /* Pods-UISDKKmpSample.debug.xcconfig */,
+				FE54C8CFE3473B0944DD0035 /* Pods-UISDKKmpSample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -181,13 +175,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UISDKKmpSample/Pods-UISDKKmpSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -231,16 +221,15 @@
 /* Begin XCBuildConfiguration section */
 		34F387E32F29C21A00214216 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E034A442FD22FA5002995A1 /* Debug.xcconfig */;
+			baseConfigurationReference = 720D209A4E0DC8FCD0563685 /* Pods-UISDKKmpSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZNBZ7BZAKZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISDKKmpSample/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UISDKShowcase;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to provide you with personalized content.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
@@ -254,8 +243,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mapxus.uisdk-showcase.ios";
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -270,16 +258,15 @@
 		};
 		34F387E42F29C21A00214216 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E034A452FD22FA5002995A1 /* Release.xcconfig */;
+			baseConfigurationReference = FE54C8CFE3473B0944DD0035 /* Pods-UISDKKmpSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZNBZ7BZAKZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISDKKmpSample/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UISDKShowcase;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to provide you with personalized content.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DropInUISDK needs your location to provide you with the best accessibility information.";
@@ -293,8 +280,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mapxus.uisdk-showcase.ios";
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -309,6 +295,7 @@
 		};
 		34F387E52F29C21A00214216 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E034A442FD22FA5002995A1 /* Config.example.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -373,6 +360,7 @@
 		};
 		34F387E62F29C21A00214216 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E034A442FD22FA5002995A1 /* Config.example.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

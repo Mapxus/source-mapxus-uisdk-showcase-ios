@@ -15,15 +15,44 @@
 scheme = "UISDKKmpSample"
 icon_path = './UISDKKmpSample/Assets.xcassets/AppIcon.appiconset/1024.png'
 ipa_dir = "./fastlane_build"
-ipa_name = "#{scheme}.ipa"
+
+COMPANIES = %w[mapxus kawasaki]
+DEFAULT_COMPANY = "mapxus"
 
 default_platform(:ios)
 
-def ensure_local_secrets_config!
-  secrets_path = File.expand_path("../BuildConfig/Secrets.local.xcconfig", __dir__)
-  return if File.exist?(secrets_path)
+def resolve_company(options)
+  company = (options[:com] || DEFAULT_COMPANY).to_s.downcase
+  unless COMPANIES.include?(company)
+    UI.user_error!("Unknown com:#{company}. Supported: #{COMPANIES.join(', ')}")
+  end
+  company
+end
 
-  UI.user_error!("Missing BuildConfig/Secrets.local.xcconfig. Copy BuildConfig/Secrets.example.xcconfig to BuildConfig/Secrets.local.xcconfig and fill in MAPXUS_API_KEY and MAPXUS_SECRET before running fastlane.")
+def flavor_config_path(company)
+  File.expand_path("../BuildConfig/Config.#{company}.xcconfig", __dir__)
+end
+
+# Reads a setting out of the flavor xcconfig so it stays the single source of truth.
+def flavor_config_value(company, key)
+  path = flavor_config_path(company)
+  line = File.readlines(path).find { |l| l =~ /\A\s*#{Regexp.escape(key)}\s*=/ }
+  UI.user_error!("#{key} is not defined in #{path}") if line.nil?
+  line.split("=", 2).last.strip
+end
+
+def ensure_flavor_config!(company)
+  path = flavor_config_path(company)
+  unless File.exist?(path)
+    UI.user_error!("Missing #{path}. Copy BuildConfig/Config.example.xcconfig to BuildConfig/Config.#{company}.xcconfig and fill in the real values.")
+  end
+
+  %w[MAPXUS_API_KEY MAPXUS_SECRET].each do |key|
+    value = flavor_config_value(company, key)
+    if value.empty? || value.start_with?("YOUR_")
+      UI.user_error!("#{key} is still a placeholder in #{path}.")
+    end
+  end
 end
 
 platform :ios do
@@ -33,8 +62,6 @@ platform :ios do
   #######################################################################################################################################
 
   before_all do |lane|
-    ensure_local_secrets_config!
-
     # Clean build artifacts
     clear_derived_data
 
@@ -47,22 +74,32 @@ platform :ios do
   #######################################################################################################################################
   #######################################################################################################################################
 
-  desc "Upload the package to fir.im"
-  lane :fir do
+  desc "Upload the package to fir.im. Usage: fastlane fir com:mapxus | fastlane fir com:kawasaki"
+  lane :fir do |options|
 
-    bundle_id = "com.mapxus.uisdk-showcase.ios"
+    company = resolve_company(options)
+    ensure_flavor_config!(company)
+
+    bundle_id = flavor_config_value(company, "PRODUCT_BUNDLE_IDENTIFIER")
+    ipa_name = "#{scheme}-#{company}.ipa"
+
+    UI.message("Building flavor '#{company}' (#{bundle_id})")
 
     # Request the development certificate as well; otherwise, Xcode automatic signing may create extra development certificates
     match(type: "development", app_identifier: bundle_id)
     match(type: "adhoc", app_identifier: bundle_id)
 
-    # Use gym to build, package, and sign the app
+    # Use gym to build, package, and sign the app.
+    # The flavor xcconfig is passed via -xcconfig so it overrides the template
+    # the project is based on, without touching any tracked file.
     gym(
       output_directory: ipa_dir,
       output_name: ipa_name,
       clean: true,
       workspace: scheme + ".xcworkspace",
       scheme: scheme,
+      configuration: "Release",
+      xcconfig: flavor_config_path(company),
       export_method: 'ad-hoc',
       xcargs: "-allowProvisioningUpdates"
     )

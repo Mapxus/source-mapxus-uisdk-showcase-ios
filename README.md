@@ -12,20 +12,26 @@
 
 ## Setup
 
-### 1. Install dependencies
+### 1. Configure credentials
+
+Credentials are injected at build time through `BuildConfig/Config.example.xcconfig`,
+which is the base configuration for the project. Open it and fill in:
+
+- `PRODUCT_BUNDLE_IDENTIFIER`
+- `INFOPLIST_KEY_CFBundleDisplayName`
+- `MAPXUS_API_KEY`
+- `MAPXUS_SECRET`
+
+If you would rather keep your credentials out of the tracked file, copy it to
+`BuildConfig/Config.<name>.xcconfig`, edit the copy, and point the build
+configuration at it in **Project > Info > Configurations**. Files matching
+`BuildConfig/Config.*.xcconfig` are ignored by Git.
+
+### 2. Install dependencies
 
 ```bash
 pod install
 ```
-
-### 2. Configure credentials
-
-This project does not commit the API key or secret to Git. They are injected via `xcconfig`.
-
-1. Copy `BuildConfig/Secrets.example.xcconfig` to `BuildConfig/Secrets.local.xcconfig`
-2. Fill in your own `MAPXUS_API_KEY` and `MAPXUS_SECRET`
-
-`BuildConfig/Secrets.local.xcconfig` is listed in `.gitignore` and should remain local only.
 
 ### 3. Open the workspace
 
@@ -86,4 +92,4 @@ The app is organized around three pieces of shared state managed by `Config.shar
 - [UISDKKmpSample/Config.swift](UISDKKmpSample/Config.swift)
 - [UISDKKmpSample/MapViewController.swift](UISDKKmpSample/MapViewController.swift)
 - [UISDKKmpSample/FeatureConstants.swift](UISDKKmpSample/FeatureConstants.swift)
-- [BuildConfig/Secrets.example.xcconfig](BuildConfig/Secrets.example.xcconfig)
+- [BuildConfig/Config.example.xcconfig](BuildConfig/Config.example.xcconfig)

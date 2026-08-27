@@ -4,7 +4,7 @@
 //
 //  The MAPXUS_API_KEY / MAPXUS_SECRET macros are supplied by
 //  GCC_PREPROCESSOR_DEFINITIONS and hold the raw credential tokens.
-//  See BuildConfig/Secrets.example.xcconfig.
+//  See BuildConfig/Config.example.xcconfig.
 //
 
 #import "ConstString.h"
