@@ -189,11 +189,29 @@
     "defaultValue": "defaultNavigationModes",
     "description": "Available navigation mode options, such as walking or wheelchair accessible routes. Defines which navigation modes are supported or suggested. Defaults to [NavigationMode.FOOT, NavigationMode.ACCESSIBILITY, NavigationMode.ELEVATOR, NavigationMode.ESCALATOR, NavigationMode.PUBLIC_TRANSPORT]."
   },
+  "enableReroute": {
+    "name": "enableReroute",
+    "dataType": "Boolean",
+    "defaultValue": "false",
+    "description": "Determines whether the reroute module is enabled. When true, the reroute feature/module is enabled. Default is false."
+  },
+  "enablePoiLiveStatus": {
+    "name": "enablePoiLiveStatus",
+    "dataType": "Boolean",
+    "defaultValue": "false",
+    "description": "Determines whether POI live status is enabled. When true, POI live status information is enabled. Default is false."
+  },
   "publicTransportModes": {
     "name": "publicTransportModes",
     "dataType": "[PublicTransportMode]",
     "defaultValue": "[PublicTransportMode.GOOGLE_MAP]",
     "description": "List of supported public transport modes. Defaults to [PublicTransportMode.GOOGLE_MAP]. When empty, no public transport mode will be showed."
+  },
+  "routeRenderMode": {
+    "name": "routeRenderMode",
+    "dataType": "RouteRenderMode",
+    "defaultValue": "RouteRenderMode.ANIMATION",
+    "description": "Controls how the route is rendered on the map. Supported modes are SHORTENING and ANIMATION. Default is ANIMATION."
   },
   "maximumRoutePlanningDistance": {
     "name": "maximumRoutePlanningDistance",
