@@ -195,6 +195,12 @@
     "defaultValue": "false",
     "description": "Determines whether the reroute module is enabled. When true, the reroute feature/module is enabled. Default is false."
   },
+  "enableVRNavigation": {
+    "name": "enableVRNavigation",
+    "dataType": "Boolean",
+    "defaultValue": "false",
+    "description": "Determines whether visual navigation is enabled. Default is false."
+  },
   "enablePoiLiveStatus": {
     "name": "enablePoiLiveStatus",
     "dataType": "Boolean",
@@ -417,6 +423,14 @@
     "parameters": "startPoint: StartPoint? = nil\ndestinationPoint: DestinationPoint? = nil",
     "returnType": "AppRoute (NavigationRoute)"
   },
+  "LocationRoute": {
+    "name": "LocationRoute",
+    "dataType": "AppRoute",
+    "defaultValue": "",
+    "description": "Opens the location page and highlights a specific indoor or outdoor coordinate. Indoor locations support a common floor ID or a shared floor ID.",
+    "parameters": "location: Location (OutdoorLocation / IndoorLocation)",
+    "returnType": "AppRoute (LocationRoute)"
+  },
   "setToolTipsListener": {
     "name": "setToolTipsListener",
     "dataType": "Listener",
@@ -605,10 +619,11 @@
     "name": "setMenuEventListener",
     "dataType": "Listener",
     "defaultValue": "nil",
-    "description": "Handles menu close events.",
+    "description": "Handles menu close and language selection events.",
     "listenerName": "MenuEventListener",
     "methods": [
-      "onClose()"
+      "onClose()",
+      "onLanguageSelected(language: Language)"
     ]
   },
   "setDataTrackingListener": {
